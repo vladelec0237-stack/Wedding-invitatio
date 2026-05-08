@@ -1,0 +1,427 @@
+<!-- МУЗЫКА -->
+<audio id="bgMusic" loop>
+  <source src="Music.mp3.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ОТКРЫТЬ ДЕЛО -->
+<div class="open-case" onclick="openCase()">
+  <div class="folder">
+    <h1>ЛИЧНОЕ ДЕЛО</h1>
+    <p>Нажмите, чтобы открыть</p>
+  </div>
+</div>
+
+<script>
+function openCase() {
+  document.querySelector(".open-case").style.display = "none";
+  document.querySelector(".site-content").style.display = "block";
+
+  const music = document.getElementById("bgMusic");
+  music.play();
+}
+</script>
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  background:#f6f1e7;
+  font-family: 'Times New Roman', serif;
+  overflow-x:hidden;
+  color:#1d1d1d;
+}
+
+.site-content{
+  display:none;
+}
+
+.open-case{
+  position:fixed;
+  inset:0;
+  background:#f6f1e7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.folder{
+  width:320px;
+  padding:40px;
+  border:3px solid #222;
+  background:#efe7d7;
+  text-align:center;
+  cursor:pointer;
+  transition:.4s;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.folder:hover{
+  transform:scale(1.03);
+}
+
+.folder h1{
+  margin:0;
+  font-size:38px;
+}
+
+.folder p{
+  margin-top:15px;
+  font-size:18px;
+}
+
+section{
+  padding:80px 10%;
+  position:relative;
+}
+
+.title{
+  font-size:44px;
+  margin-bottom:40px;
+  text-transform:uppercase;
+}
+
+.protocol-box{
+  border:2px solid #222;
+  padding:40px;
+  background:#fffaf0;
+}
+
+.person-block{
+  display:flex;
+  gap:30px;
+  align-items:flex-start;
+  margin:50px 0;
+}
+
+.person-photo{
+  width:240px;
+  filter:grayscale(100%);
+  border:2px solid #111;
+}
+
+.lines{
+  flex:1;
+}
+
+.line-title{
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.cell-line{
+  border-bottom:2px solid #111;
+  padding:12px 0;
+  margin-bottom:15px;
+  letter-spacing:3px;
+  font-size:20px;
+}
+
+.note{
+  margin-top:20px;
+  line-height:1.8;
+}
+
+.evidence{
+  position:absolute;
+  right:-300px;
+  top:50%;
+  width:220px;
+  transition:1s;
+}
+
+.evidence.show{
+  right:40px;
+}
+
+.timeline{
+  line-height:2.2;
+  font-size:22px;
+}
+
+.input-box{
+  width:100%;
+  padding:18px;
+  font-size:18px;
+  margin-top:20px;
+  border:2px solid #222;
+  background:#fffdf7;
+}
+
+.send-btn{
+  margin-top:30px;
+  padding:18px 50px;
+  font-size:20px;
+  background:#111;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+.final-box{
+  text-align:center;
+}
+
+.stamp{
+  width:280px;
+  margin-top:40px;
+}
+
+.car{
+  width:420px;
+  margin-top:50px;
+  transform:translateX(-600px);
+  transition:1.5s;
+}
+
+.car.show{
+  transform:translateX(0);
+}
+</style>
+
+<div class="site-content">
+
+<section>
+  <div class="protocol-box">
+
+    <div class="title">
+      ПРОТОКОЛ<br>
+      об административном задержании
+    </div>
+
+    <div class="person-block">
+
+      <div class="lines">
+        <div class="line-title">
+          Я, уполномоченное лицо, гражданин:
+        </div>
+
+        <div class="cell-line">
+          Черноволов Даниил Евгеньевич
+        </div>
+
+        <div class="note">
+          Действуя на основании личных намерений,
+          устойчивых чувств и окончательного решения
+          о создании семьи, произвел задержание гражданки:
+        </div>
+
+        <div class="cell-line">
+          Ермолаева Диана Михайловна
+        </div>
+
+        <div class="note">
+          Действуя по предварительному взаимному согласию,
+          вступили в сговор с целью создания семьи,
+          совместного ведения хозяйства
+          и пожизненного союза.
+        </div>
+
+      </div>
+
+      <img src="Groom.jpg.jpg" class="person-photo">
+
+    </div>
+
+    <div class="person-block">
+
+      <div class="lines">
+        <div class="note">
+          В ходе проверки выявлены следующие обстоятельства:
+        </div>
+
+        <div class="timeline">
+          1. незаконное завладение сердцем;<br>
+          2. систематическое присутствие в мыслях;<br>
+          3. планирование совместного будущего;<br>
+          4. намерение обменяться кольцами;<br>
+          5. отсутствие сопротивления задержанию.
+        </div>
+
+      </div>
+
+      <img src="Bride.jpg.jpg" class="person-photo">
+
+    </div>
+
+  </div>
+
+  <img src="Cuffs.jpg.jpg" class="evidence scroll-item">
+
+</section>
+
+<section>
+
+  <div class="title">
+    I. МЕСТО ПРОВЕДЕНИЯ ПРОЦЕССУАЛЬНЫХ ДЕЙСТВИЙ
+  </div>
+
+  <div class="timeline">
+    Торжественное празднование задержания состоится по адресу:<br><br>
+
+    г.Степногорск,<br>
+    ул.Парковая, 2мкр, д.79<br>
+    ресторан Green Which
+  </div>
+
+</section>
+
+<section>
+
+  <div class="title">
+    II. ПРОГРАММА ПРОЦЕССУАЛЬНЫХ ДЕЙСТВИЙ
+  </div>
+
+  <div class="timeline">
+    18:00 — сбор понятых<br><br>
+
+    18:20 — официальное подтверждение задержания
+    и обмен вещественными доказательствами —
+    кольца, 2шт<br><br>
+
+    Банкет в честь успешного завершения операции,
+    далее — свободные манёвры
+    до полной капитуляции усталости
+  </div>
+
+  <img src="Rings-bag.jpg.jpg" class="evidence scroll-item">
+
+</section>
+
+<section>
+
+  <div class="title">
+    III. ФОРМА ОДЕЖДЫ ДЛЯ ПОНЯТЫХ
+  </div>
+
+  <div class="timeline">
+    В целях соблюдения праздничной дисциплины
+    предписывается:<br><br>
+
+    стиль классический / нарядный,<br>
+    цветовая директива —
+    от светлых до темных оттенков.
+  </div>
+
+</section>
+
+<section>
+
+  <div class="title">
+    IV. ПОРЯДОК ПЕРЕДАЧИ МАТЕРИАЛЬНЫХ ДОКАЗАТЕЛЬСТВ
+  </div>
+
+  <div class="timeline">
+    В ходе предварительной проверки установлено,
+    что молодая семья обеспечена предметами быта.<br><br>
+
+    В связи с этим разрешается передача подарков
+    исключительно в денежной форме.
+  </div>
+
+  <img src="Money-envelope.jpg.jpg" class="evidence scroll-item">
+
+  <div class="note">
+    Средства будут направлены
+    на развитие совместной стратегии
+    и укрепление материально-технической базы семьи.
+  </div>
+
+</section>
+
+<section>
+
+  <div class="title">
+    V. ДОПОЛНИТЕЛЬНЫЕ РАСПОРЯЖЕНИЯ
+  </div>
+
+  <div class="timeline">
+    Понятым рекомендуется прибыть вовремя,
+    в установленном дресс-кодом виде
+    и в полной готовности
+    к активному участию
+    в праздничных процессуальных действиях.
+  </div>
+
+</section>
+
+<section>
+
+  <div class="title">
+    VI. ЯВКА ПОНЯТОГО
+  </div>
+
+  <div class="timeline">
+    Для участия в процессуальных действиях
+    просим подтвердить личное присутствие
+    до 31.07.2026
+  </div>
+
+  <input
+    class="input-box"
+    placeholder="Введите ваше ФИО"
+  >
+
+  <button class="send-btn">
+    Отправить
+  </button>
+
+  <div class="note">
+    Настоящим подтверждается готовность лично
+    присутствовать при приведении приговора
+    в исполнение и разделить один из важнейших
+    моментов в жизни сторон.<br><br>
+
+    Стороны дела будут искренне рады видеть
+    указанного понятого в числе свидетелей
+    создания новой семьи и рассчитывают
+    на активное участие
+    в праздничных действиях
+    и веселье без ограничений.<br><br>
+
+    Неявка рассматривается
+    как уклонение от участия
+    в историческом событии.
+  </div>
+
+</section>
+
+<section>
+
+  <div class="final-box">
+
+    <div class="title">
+      VII. ЗАКЛЮЧЕНИЕ
+    </div>
+
+    <div class="timeline">
+      Настоящий протокол вступает в силу
+      с момента официального объявления
+      граждан мужем и женой.
+    </div>
+
+    <img src="Final-car.jpg.jpg" class="car" id="car">
+
+  </div>
+
+</section>
+
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
+    }
+  });
+});
+
+document.querySelectorAll('.scroll-item').forEach(el=>{
+  observer.observe(el);
+});
+
+observer.observe(document.getElementById('car'));
+</script>
