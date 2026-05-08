@@ -1,708 +1,427 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- МУЗЫКА -->
+<audio id="bgMusic" loop>
+  <source src="Music.mp3.mp3" type="audio/mpeg">
+</audio>
 
-  <title>Личное дело №001 | Даниил и Диана</title>
+<!-- ОТКРЫТЬ ДЕЛО -->
+<div class="open-case" onclick="openCase()">
+  <div class="folder">
+    <h1>ЛИЧНОЕ ДЕЛО</h1>
+    <p>Нажмите, чтобы открыть</p>
+  </div>
+</div>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<script>
+function openCase() {
+  document.querySelector(".open-case").style.display = "none";
+  document.querySelector(".site-content").style.display = "block";
 
-    html {
-      scroll-behavior: smooth;
-    }
+  const music = document.getElementById("bgMusic");
+  music.play();
+}
+</script>
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,.9), transparent 28%),
-        radial-gradient(circle at 80% 25%, rgba(230,230,230,.9), transparent 32%),
-        linear-gradient(135deg, #e9e9e9, #f8f8f8 48%, #d9d9d9);
-      color: #111;
-      font-family: "Courier New", Courier, monospace;
-      overflow-x: hidden;
-    }
+<style>
+body{
+  margin:0;
+  padding:0;
+  background:#f6f1e7;
+  font-family: 'Times New Roman', serif;
+  overflow-x:hidden;
+  color:#1d1d1d;
+}
 
-    .phone-frame {
-      width: min(430px, 100%);
-      margin: 0 auto;
-      min-height: 100vh;
-      background: #fff;
-      border-left: 8px solid #111;
-      border-right: 8px solid #111;
-      position: relative;
-      box-shadow: 0 0 45px rgba(0,0,0,.18);
-    }
+.site-content{
+  display:none;
+}
 
-    .top-bar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      height: 58px;
-      background: rgba(255,255,255,.95);
-      border-bottom: 2px solid #111;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
-      backdrop-filter: blur(8px);
-    }
+.open-case{
+  position:fixed;
+  inset:0;
+  background:#f6f1e7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
 
-    .top-icon {
-      font-size: 22px;
-      font-weight: 800;
-    }
+.folder{
+  width:320px;
+  padding:40px;
+  border:3px solid #222;
+  background:#efe7d7;
+  text-align:center;
+  cursor:pointer;
+  transition:.4s;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
 
-    .audio-btn {
-      border: 2px solid #111;
-      background: #fff;
-      padding: 7px 10px;
-      font-family: inherit;
-      font-weight: 800;
-      font-size: 13px;
-      cursor: pointer;
-    }
+.folder:hover{
+  transform:scale(1.03);
+}
 
-    section {
-      min-height: 100vh;
-      padding: 56px 25px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-bottom: 2px dashed #bbb;
-    }
+.folder h1{
+  margin:0;
+  font-size:38px;
+}
 
-    .center {
-      text-align: center;
-      align-items: center;
-    }
+.folder p{
+  margin-top:15px;
+  font-size:18px;
+}
 
-    h1, h2, h3 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 900;
-      line-height: 1.08;
-      text-transform: uppercase;
-    }
+section{
+  padding:80px 10%;
+  position:relative;
+}
 
-    h1 {
-      font-size: 34px;
-      margin-bottom: 18px;
-    }
+.title{
+  font-size:44px;
+  margin-bottom:40px;
+  text-transform:uppercase;
+}
 
-    h2 {
-      font-size: 27px;
-      margin-bottom: 20px;
-    }
+.protocol-box{
+  border:2px solid #222;
+  padding:40px;
+  background:#fffaf0;
+}
 
-    h3 {
-      font-size: 21px;
-      margin: 24px 0 14px;
-    }
+.person-block{
+  display:flex;
+  gap:30px;
+  align-items:flex-start;
+  margin:50px 0;
+}
 
-    p {
-      font-size: 18px;
-      line-height: 1.18;
-      margin-bottom: 16px;
-    }
+.person-photo{
+  width:240px;
+  filter:grayscale(100%);
+  border:2px solid #111;
+}
 
-    .type-text {
-      font-size: 17px;
-      line-height: 1.15;
-      text-align: left;
-      width: 100%;
-    }
+.lines{
+  flex:1;
+}
 
-    .case-number {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 26px;
-      margin: 8px 0 50px;
-    }
+.line-title{
+  font-weight:bold;
+  margin-bottom:20px;
+}
 
-    .hand {
-      font-family: "Brush Script MT", cursive;
-      font-size: 32px;
-      font-weight: normal;
-      text-transform: none;
-      display: inline-block;
-      transform: rotate(-4deg);
-      border-bottom: 2px solid #111;
-      padding: 0 12px;
-    }
+.cell-line{
+  border-bottom:2px solid #111;
+  padding:12px 0;
+  margin-bottom:15px;
+  letter-spacing:3px;
+  font-size:20px;
+}
 
-    .stamp {
-      display: inline-block;
-      border: 4px double #9d1f2f;
-      color: #9d1f2f;
-      padding: 7px 16px;
-      font-family: Arial, sans-serif;
-      font-size: 24px;
-      font-weight: 900;
-      text-transform: uppercase;
-      transform: rotate(-5deg);
-      margin-top: 46px;
-    }
+.note{
+  margin-top:20px;
+  line-height:1.8;
+}
 
-    .field {
-      margin: 13px 0;
-    }
+.evidence{
+  position:absolute;
+  right:-300px;
+  top:50%;
+  width:220px;
+  transition:1s;
+}
 
-    .boxes {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      width: 195px;
-      height: 30px;
-      border-top: 2px solid #aaa;
-      border-left: 2px solid #aaa;
-      margin: 7px 0 2px;
-    }
+.evidence.show{
+  right:40px;
+}
 
-    .boxes span {
-      border-right: 2px solid #aaa;
-      border-bottom: 2px solid #aaa;
-    }
+.timeline{
+  line-height:2.2;
+  font-size:22px;
+}
 
-    .label {
-      font-size: 14px;
-      text-align: center;
-      width: 195px;
-    }
+.input-box{
+  width:100%;
+  padding:18px;
+  font-size:18px;
+  margin-top:20px;
+  border:2px solid #222;
+  background:#fffdf7;
+}
 
-    .filled {
-      position: absolute;
-      font-family: "Brush Script MT", cursive;
-      font-size: 28px;
-      transform: rotate(-5deg);
-      margin: -34px 0 0 12px;
-    }
+.send-btn{
+  margin-top:30px;
+  padding:18px 50px;
+  font-size:20px;
+  background:#111;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
 
-    .photo-card {
-      position: absolute;
-      right: 22px;
-      top: 190px;
-      width: 125px;
-      height: 155px;
-      background: #ddd;
-      border: 2px solid #555;
-      filter: grayscale(1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Georgia, serif;
-      font-size: 46px;
-      font-weight: 900;
-      text-align: center;
-    }
+.final-box{
+  text-align:center;
+}
 
-    .photo-card.small {
-      width: 130px;
-      height: 82px;
-      top: auto;
-      bottom: 92px;
-      right: 20px;
-      font-size: 16px;
-      padding: 10px;
-    }
+.stamp{
+  width:280px;
+  margin-top:40px;
+}
 
-    .evidence {
-      width: 185px;
-      height: 145px;
-      margin: 24px auto;
-      border: 2px solid #bbb;
-      background: #f4f4f4;
-      transform: rotate(-8deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 58px;
-      box-shadow: 0 12px 24px rgba(0,0,0,.12);
-    }
+.car{
+  width:420px;
+  margin-top:50px;
+  transform:translateX(-600px);
+  transition:1.5s;
+}
 
-    .program-row {
-      display: grid;
-      grid-template-columns: 74px 1fr;
-      gap: 12px;
-      font-size: 18px;
-      line-height: 1.1;
-      margin: 21px 0;
-    }
+.car.show{
+  transform:translateX(0);
+}
+</style>
 
-    .program-row b {
-      font-size: 19px;
-    }
+<div class="site-content">
 
-    .dress-circles {
-      display: grid;
-      grid-template-columns: repeat(4, 52px);
-      gap: 16px;
-      margin: 28px auto 18px;
-      justify-content: center;
-    }
+<section>
+  <div class="protocol-box">
 
-    .circle {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-    }
-
-    .c1 { background: #f7f7f7; }
-    .c2 { background: #d8d8d8; }
-    .c3 { background: #b8b8b8; }
-    .c4 { background: #111; }
-    .c5 { background: #f4eadf; }
-    .c6 { background: #d9c1a3; }
-    .c7 { background: #9c7a54; }
-    .c8 { background: #6d6d6d; }
-
-    .money {
-      font-size: 70px;
-      text-align: center;
-      margin: 25px 0;
-    }
-
-    .input-line {
-      height: 38px;
-      border: none;
-      border-bottom: 2px solid #111;
-      font-family: inherit;
-      font-size: 17px;
-      width: 100%;
-      margin: 14px 0 18px;
-      padding-left: 8px;
-      outline: none;
-    }
-
-    .checkbox-row {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      margin: 16px 0;
-      font-size: 15px;
-      line-height: 1.1;
-    }
-
-    .fake-checkbox {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #111;
-      flex: 0 0 auto;
-      margin-top: 2px;
-    }
-
-    .send-btn {
-      display: inline-block;
-      text-decoration: none;
-      color: #111;
-      border: 3px solid #9d1f2f;
-      padding: 12px 35px;
-      font-family: Georgia, serif;
-      font-weight: 900;
-      font-size: 19px;
-      background: #fff;
-      margin-top: 14px;
-    }
-
-    .final-stamp {
-      width: 180px;
-      height: 180px;
-      border: 5px double #9d1f2f;
-      border-radius: 50%;
-      color: #9d1f2f;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin: 26px auto;
-      transform: rotate(-11deg);
-      font-family: Arial, sans-serif;
-      font-weight: 900;
-      font-size: 15px;
-      text-transform: uppercase;
-    }
-
-    .car {
-      font-size: 80px;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(45px);
-      transition: 850ms ease;
-    }
-
-    .slide-right {
-      opacity: 0;
-      transform: translateX(130px) rotate(-4deg);
-      transition: 900ms ease;
-    }
-
-    .slide-left {
-      opacity: 0;
-      transform: translateX(-110px);
-      transition: 900ms ease;
-    }
-
-    .active {
-      opacity: 1;
-      transform: translate(0) rotate(0);
-    }
-  </style>
-</head>
-
-<body>
-
-  <main class="phone-frame">
-
-    <div class="top-bar">
-      <div class="top-icon">☰</div>
-
-      <button class="audio-btn" id="musicButton">
-        ▶ МУЗЫКА
-      </button>
-
-      <div class="top-icon">↻</div>
+    <div class="title">
+      ПРОТОКОЛ<br>
+      об административном задержании
     </div>
 
-    <!-- Музыка -->
-    <audio id="weddingMusic" loop>
-      <source src="music.mp3" type="audio/mpeg">
-    </audio>
+    <div class="person-block">
 
-    <!-- Экран 1 -->
-    <section class="center">
-      <div class="reveal">
-
-        <h1>Личное дело</h1>
-
-        <div class="case-number">
-          № <span class="hand">001</span>
+      <div class="lines">
+        <div class="line-title">
+          Я, уполномоченное лицо, гражданин:
         </div>
 
-        <p>
-          о задержании граждан<br>
-          с целью последующего<br>
-          бракосочетания
-        </p>
-
-        <div class="stamp">
-          Открыть
+        <div class="cell-line">
+          Черноволов Даниил Евгеньевич
         </div>
 
-      </div>
-    </section>
-
-    <!-- Экран 2 -->
-    <section>
-
-      <div class="reveal">
-
-        <h2>ПРОТОКОЛ</h2>
-
-        <h3>об административном задержании</h3>
-
-        <div class="field">
-          <div class="boxes">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-
-          <div class="filled">Даниил</div>
-
-          <div class="label">
-            гражданин
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="boxes">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-
-          <div class="filled">Диана</div>
-
-          <div class="label">
-            гражданка
-          </div>
-        </div>
-
-        <p class="type-text">
+        <div class="note">
           Действуя на основании личных намерений,
           устойчивых чувств и окончательного решения
-          о создании семьи.
-        </p>
-
-      </div>
-
-      <div class="photo-card slide-right">
-        D<br>&<br>D
-      </div>
-
-    </section>
-
-    <!-- Экран 3 -->
-    <section>
-
-      <div class="reveal">
-
-        <h2>ПОСТАНОВЛЕНО</h2>
-
-        <p class="type-text">
-          Назначить процедуру официального
-          бракосочетания
-          на <span class="hand">22 августа</span>
-          2026 года
-          в <span class="hand">18:00</span>
-        </p>
-
-      </div>
-
-      <div class="evidence slide-right">
-        💍
-      </div>
-
-    </section>
-
-    <!-- Экран 4 -->
-    <section>
-
-      <div class="reveal">
-
-        <h2>
-          I. МЕСТО ПРОВЕДЕНИЯ
-        </h2>
-
-        <p class="type-text">
-          Торжественное празднование
-          состоится по адресу:
-        </p>
-
-        <p class="hand" style="font-size:29px;margin:18px 0 22px;">
-          г. Степногорск,<br>
-          ул. Парковая,<br>
-          2 мкр, д.79
-        </p>
-
-        <p class="type-text">
-          ресторан <b>Green Which</b>
-        </p>
-
-      </div>
-
-    </section>
-
-    <!-- Экран 5 -->
-    <section>
-
-      <div class="reveal">
-
-        <h2>
-          II. ПРОГРАММА
-        </h2>
-
-        <div class="program-row">
-          <b>18:00</b>
-          <span>сбор гостей</span>
+          о создании семьи, произвел задержание гражданки:
         </div>
 
-        <div class="program-row">
-          <b>18:30</b>
-          <span>начало торжества</span>
+        <div class="cell-line">
+          Ермолаева Диана Михайловна
         </div>
 
-        <div class="program-row">
-          <b>19:00</b>
-          <span>банкет</span>
-        </div>
-
-        <div class="program-row">
-          <b>22:00</b>
-          <span>торт и танцы</span>
+        <div class="note">
+          Действуя по предварительному взаимному согласию,
+          вступили в сговор с целью создания семьи,
+          совместного ведения хозяйства
+          и пожизненного союза.
         </div>
 
       </div>
 
-    </section>
+      <img src="Groom.jpg.jpg" class="person-photo">
 
-    <!-- Экран 6 -->
-    <section>
+    </div>
 
-      <div class="reveal">
+    <div class="person-block">
 
-        <h2>
-          III. ДРЕСС-КОД
-        </h2>
+      <div class="lines">
+        <div class="note">
+          В ходе проверки выявлены следующие обстоятельства:
+        </div>
 
-        <p class="type-text">
-          стиль:
-          <b>классика / нарядный</b>
-        </p>
-
-        <div class="dress-circles">
-          <div class="circle c1"></div>
-          <div class="circle c2"></div>
-          <div class="circle c3"></div>
-          <div class="circle c4"></div>
-          <div class="circle c5"></div>
-          <div class="circle c6"></div>
-          <div class="circle c7"></div>
-          <div class="circle c8"></div>
+        <div class="timeline">
+          1. незаконное завладение сердцем;<br>
+          2. систематическое присутствие в мыслях;<br>
+          3. планирование совместного будущего;<br>
+          4. намерение обменяться кольцами;<br>
+          5. отсутствие сопротивления задержанию.
         </div>
 
       </div>
 
-    </section>
+      <img src="Bride.jpg.jpg" class="person-photo">
 
-    <!-- Экран 7 -->
-    <section>
+    </div>
 
-      <div class="reveal">
+  </div>
 
-        <h2>
-          VI. ЯВКА ПОНЯТОГО
-        </h2>
+  <img src="Cuffs.jpg.jpg" class="evidence scroll-item">
 
-        <p class="type-text">
-          Просим подтвердить
-          своё присутствие
-        </p>
+</section>
 
-        <input
-          class="input-line"
-          type="text"
-          placeholder="Введите ваше ФИО"
-        >
+<section>
 
-        <div class="checkbox-row">
+  <div class="title">
+    I. МЕСТО ПРОВЕДЕНИЯ ПРОЦЕССУАЛЬНЫХ ДЕЙСТВИЙ
+  </div>
 
-          <div class="fake-checkbox"></div>
+  <div class="timeline">
+    Торжественное празднование задержания состоится по адресу:<br><br>
 
-          <span>
-            Подтверждаю участие
-            в свадьбе Даниила и Дианы
-          </span>
+    г.Степногорск,<br>
+    ул.Парковая, 2мкр, д.79<br>
+    ресторан Green Which
+  </div>
 
-        </div>
+</section>
 
-        <a
-          class="send-btn"
-          href="https://wa.me/77000000000"
-          target="_blank"
-        >
-          Отправить
-        </a>
+<section>
 
-      </div>
+  <div class="title">
+    II. ПРОГРАММА ПРОЦЕССУАЛЬНЫХ ДЕЙСТВИЙ
+  </div>
 
-    </section>
+  <div class="timeline">
+    18:00 — сбор понятых<br><br>
 
-    <!-- Экран 8 -->
-    <section class="center">
+    18:20 — официальное подтверждение задержания
+    и обмен вещественными доказательствами —
+    кольца, 2шт<br><br>
 
-      <div class="reveal">
+    Банкет в честь успешного завершения операции,
+    далее — свободные манёвры
+    до полной капитуляции усталости
+  </div>
 
-        <h2>
-          VII. ЗАКЛЮЧЕНИЕ
-        </h2>
+  <img src="Rings-bag.jpg.jpg" class="evidence scroll-item">
 
-        <p class="type-text" style="text-align:center;">
-          Настоящий протокол
-          вступает в силу
-          с момента официального
-          объявления граждан
-          мужем и женой.
-        </p>
+</section>
 
-        <div class="final-stamp">
-          Пожизненное<br>
-          счастье<br>
-          без ограничений
-        </div>
+<section>
 
-        <div class="car">
-          🚓💍
-        </div>
+  <div class="title">
+    III. ФОРМА ОДЕЖДЫ ДЛЯ ПОНЯТЫХ
+  </div>
 
-      </div>
+  <div class="timeline">
+    В целях соблюдения праздничной дисциплины
+    предписывается:<br><br>
 
-    </section>
+    стиль классический / нарядный,<br>
+    цветовая директива —
+    от светлых до темных оттенков.
+  </div>
 
-  </main>
+</section>
 
-  <script>
+<section>
 
-    const elements = document.querySelectorAll(
-      '.reveal, .slide-right, .slide-left'
-    );
+  <div class="title">
+    IV. ПОРЯДОК ПЕРЕДАЧИ МАТЕРИАЛЬНЫХ ДОКАЗАТЕЛЬСТВ
+  </div>
 
-    function showOnScroll() {
+  <div class="timeline">
+    В ходе предварительной проверки установлено,
+    что молодая семья обеспечена предметами быта.<br><br>
 
-      elements.forEach((element) => {
+    В связи с этим разрешается передача подарков
+    исключительно в денежной форме.
+  </div>
 
-        const rect = element.getBoundingClientRect();
+  <img src="Money-envelope.jpg.jpg" class="evidence scroll-item">
 
-        const windowHeight = window.innerHeight;
+  <div class="note">
+    Средства будут направлены
+    на развитие совместной стратегии
+    и укрепление материально-технической базы семьи.
+  </div>
 
-        if (rect.top < windowHeight - 90) {
-          element.classList.add('active');
-        }
+</section>
 
-      });
+<section>
 
+  <div class="title">
+    V. ДОПОЛНИТЕЛЬНЫЕ РАСПОРЯЖЕНИЯ
+  </div>
+
+  <div class="timeline">
+    Понятым рекомендуется прибыть вовремя,
+    в установленном дресс-кодом виде
+    и в полной готовности
+    к активному участию
+    в праздничных процессуальных действиях.
+  </div>
+
+</section>
+
+<section>
+
+  <div class="title">
+    VI. ЯВКА ПОНЯТОГО
+  </div>
+
+  <div class="timeline">
+    Для участия в процессуальных действиях
+    просим подтвердить личное присутствие
+    до 31.07.2026
+  </div>
+
+  <input
+    class="input-box"
+    placeholder="Введите ваше ФИО"
+  >
+
+  <button class="send-btn">
+    Отправить
+  </button>
+
+  <div class="note">
+    Настоящим подтверждается готовность лично
+    присутствовать при приведении приговора
+    в исполнение и разделить один из важнейших
+    моментов в жизни сторон.<br><br>
+
+    Стороны дела будут искренне рады видеть
+    указанного понятого в числе свидетелей
+    создания новой семьи и рассчитывают
+    на активное участие
+    в праздничных действиях
+    и веселье без ограничений.<br><br>
+
+    Неявка рассматривается
+    как уклонение от участия
+    в историческом событии.
+  </div>
+
+</section>
+
+<section>
+
+  <div class="final-box">
+
+    <div class="title">
+      VII. ЗАКЛЮЧЕНИЕ
+    </div>
+
+    <div class="timeline">
+      Настоящий протокол вступает в силу
+      с момента официального объявления
+      граждан мужем и женой.
+    </div>
+
+    <img src="Final-car.jpg.jpg" class="car" id="car">
+
+  </div>
+
+</section>
+
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
     }
+  });
+});
 
-    window.addEventListener('scroll', showOnScroll);
+document.querySelectorAll('.scroll-item').forEach(el=>{
+  observer.observe(el);
+});
 
-    window.addEventListener('load', showOnScroll);
-
-    // Музыка
-
-    const music = document.getElementById('weddingMusic');
-
-    const musicButton = document.getElementById('musicButton');
-
-    let isPlaying = false;
-
-    musicButton.addEventListener('click', async () => {
-
-      try {
-
-        if (!isPlaying) {
-
-          await music.play();
-
-          isPlaying = true;
-
-          musicButton.textContent = '⏸ МУЗЫКА';
-
-        } else {
-
-          music.pause();
-
-          isPlaying = false;
-
-          musicButton.textContent = '▶ МУЗЫКА';
-
-        }
-
-      } catch (error) {
-
-        alert(
-          'Загрузите рядом файл music.mp3'
-        );
-
-      }
-
-    });
-
-  </script>
-
-</body>
-</html>
+observer.observe(document.getElementById('car'));
+</script>
