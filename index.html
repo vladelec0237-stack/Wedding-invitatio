@@ -1,552 +1,69 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Личное дело №001 | Даниил и Диана</title>
-
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: #d8d8d8;
-  color: #111;
-  font-family: "Courier New", monospace;
-}
-
-.site {
-  max-width: 430px;
-  margin: 0 auto;
-  background: #f6f1e7;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-section {
-  position: relative;
-  padding: 60px 24px;
-  background: #f6f1e7;
-}
-
-h1, h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.1;
-}
-
-h1 {
-  font-size: 36px;
-}
-
-h2 {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-
-p {
-  font-size: 16px;
-  line-height: 1.45;
-  margin: 16px 0;
-}
-
-.open-screen {
-  position: fixed;
-  inset: 0;
-  background: #f6f1e7;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: 0.8s;
-}
-
-.open-screen.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.open-box {
-  border: 2px solid #111;
-  padding: 50px 30px;
-  width: 82%;
-}
-
-.open-box button {
-  margin-top: 40px;
-  border: 4px double #9d1f2f;
-  color: #9d1f2f;
-  background: transparent;
-  padding: 10px 25px;
-  font-size: 24px;
-  font-weight: 900;
-  transform: rotate(-5deg);
-  cursor: pointer;
-}
-
-.cover {
-  min-height: 100vh;
-  border: 2px solid #111;
-  margin: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-}
-
-.case-number {
-  font-size: 28px;
-  margin: 20px 0 55px;
-}
-
-.hand {
-  font-family: "Brush Script MT", "Comic Sans MS", cursive;
-  font-size: 28px;
-  border-bottom: 2px solid #111;
-  padding: 0 8px;
-}
-
-.protocol-section {
-  border: 2px solid #222;
-  margin: 24px;
-  padding: 36px 18px;
-}
-
-.protocol-section h2 {
-  font-size: 34px;
-}
-
-.protocol-section h3 {
-  font-size: 21px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.person-row {
-  display: grid;
-  grid-template-columns: 1fr 118px;
-  gap: 12px;
-  align-items: start;
-  margin: 25px 0;
-}
-
-.person-photo {
-  width: 118px;
-  height: 160px;
-  object-fit: cover;
-  filter: grayscale(100%);
-  border: 2px solid #222;
-}
-
-.field {
-  margin-bottom: 14px;
-}
-
-.cells {
-  display: flex;
-  gap: 2px;
-  min-height: 27px;
-}
-
-.cell {
-  width: 20px;
-  height: 25px;
-  border: 1.5px solid #999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  opacity: 0;
-  transform: translateX(-12px);
-  transition: 0.35s;
-}
-
-.active .cell {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.field-label {
-  width: 220px;
-  text-align: center;
-  font-size: 13px;
-  margin-top: 3px;
-}
-
-.protocol-text {
-  font-size: 15px;
-  line-height: 1.45;
-  margin: 22px 0;
-}
-
-.circumstances {
-  padding-left: 22px;
-  font-size: 16px;
-  line-height: 1.8;
-}
-
-.ruling-section {
-  min-height: 75vh;
-  padding-top: 85px;
-  overflow: hidden;
-}
-
-.ruling-section h2 {
-  font-size: 34px;
-}
-
-.ruling-text {
-  max-width: 270px;
-  position: relative;
-  z-index: 2;
-}
-
-.ruling-cuffs {
-  width: 190px;
-  position: absolute;
-  right: 15px;
-  bottom: 80px;
-  z-index: 1;
-}
-
-.place-section h2,
-.program-section h2,
-.dress-section h2,
-.gifts-section h2,
-.confirm-section h2,
-.final-section h2 {
-  font-size: 30px;
-}
-
-.program-row {
-  display: grid;
-  grid-template-columns: 70px 1fr;
-  gap: 12px;
-  margin: 22px 0;
-  font-size: 16px;
-  line-height: 1.35;
-}
-
-.evidence {
-  display: block;
-  max-width: 210px;
-  margin: 35px auto 0;
-}
-
-.money-img {
-  max-width: 260px;
-}
-
-.input-line {
-  width: 100%;
-  border: none;
-  border-bottom: 2px solid #111;
-  background: transparent;
-  height: 40px;
-  font-size: 17px;
-  font-family: inherit;
-  outline: none;
-  margin: 15px 0 25px;
-}
-
-.send-btn {
-  display: inline-block;
-  border: 3px solid #9d1f2f;
-  color: #111;
-  background: transparent;
-  text-decoration: none;
-  padding: 12px 36px;
-  font-family: Georgia, serif;
-  font-weight: 900;
-  font-size: 19px;
-  margin-top: 18px;
-}
-
-.final-stamp {
-  width: 190px;
-  height: 190px;
-  border: 5px double #9d1f2f;
-  border-radius: 50%;
-  color: #9d1f2f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 30px auto;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 900;
-  transform: rotate(-8deg);
-}
-
-.hammer {
-  font-size: 58px;
-  text-align: center;
-}
-
-.final-car {
-  width: 280px;
-  display: block;
-  margin: 35px auto 0;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: 0.8s ease;
-}
-
-.slide-right {
-  opacity: 0;
-  transform: translateX(130px);
-  transition: 0.9s ease;
-}
-
-.slide-left {
-  opacity: 0;
-  transform: translateX(-130px);
-  transition: 0.9s ease;
-}
-
-.active {
-  opacity: 1;
-  transform: translate(0);
-}
-</style>
-</head>
-
-<body>
-
-<div class="open-screen" id="openScreen">
-  <div class="open-box">
-    <h1>Личное дело<br>№001</h1>
-    <p>о задержании граждан<br>с целью последующего<br>бракосочетания</p>
-    <button id="openBtn">ОТКРЫТЬ</button>
-  </div>
-</div>
-
-<audio id="music" loop>
-  <source src="Butyrka_-_A_dlya_vas_ya_nikto_48114684.mp3" type="audio/mpeg">
-</audio>
-
-<main class="site">
-
-<section class="cover">
+<section class="confirmation-section">
   <div class="reveal">
-    <h1>Личное дело</h1>
-    <div class="case-number">№ <span class="hand">001</span></div>
-    <p>о задержании граждан<br>с целью последующего<br>бракосочетания</p>
-  </div>
-</section>
-
-<section class="protocol-section">
-  <div class="reveal">
-    <h2>ПРОТОКОЛ</h2>
-    <h3>об административном задержании</h3>
-  </div>
-
-  <div class="person-row reveal">
-    <div>
-      <p><b>Я, уполномоченное лицо, гражданин:</b></p>
-
-      <div class="field">
-        <div class="cells" data-text="Черноволов"></div>
-        <div class="field-label">фамилия</div>
-      </div>
-
-      <div class="field">
-        <div class="cells" data-text="Даниил"></div>
-        <div class="field-label">имя</div>
-      </div>
-
-      <div class="field">
-        <div class="cells" data-text="Евгеньевич"></div>
-        <div class="field-label">отчество</div>
-      </div>
-    </div>
-
-    <img class="person-photo slide-right" src="Groom.jpg.jpg" alt="Даниил">
-  </div>
-
-  <p class="protocol-text reveal">
-    Действуя на основании личных намерений, устойчивых чувств и окончательного решения
-    о создании семьи, произвел задержание гражданки:
-  </p>
-
-  <div class="person-row reveal">
-    <div>
-      <div class="field">
-        <div class="cells" data-text="Ермолаева"></div>
-        <div class="field-label">фамилия</div>
-      </div>
-
-      <div class="field">
-        <div class="cells" data-text="Диана"></div>
-        <div class="field-label">имя</div>
-      </div>
-
-      <div class="field">
-        <div class="cells" data-text="Михайловна"></div>
-        <div class="field-label">отчество</div>
-      </div>
-    </div>
-
-    <img class="person-photo slide-right" src="Bride.jpg.jpg" alt="Диана">
-  </div>
-
-  <p class="protocol-text reveal">
-    Действуя по предварительному взаимному согласию, вступили в сговор с целью создания семьи,
-    совместного ведения хозяйства и пожизненного союза.
-  </p>
-
-  <p class="protocol-text reveal">
-    В ходе проверки выявлены следующие обстоятельства:
-  </p>
-
-  <ol class="circumstances reveal">
-    <li>незаконное завладение сердцем;</li>
-    <li>систематическое присутствие в мыслях;</li>
-    <li>планирование совместного будущего;</li>
-    <li>намерение обменяться кольцами;</li>
-    <li>отсутствие сопротивления задержанию.</li>
-  </ol>
-</section>
-
-<section class="ruling-section">
-  <div class="ruling-text reveal">
-    <h2>ПОСТАНОВЛЕНО</h2>
-    <p>
-      Назначить процедуру официального бракосочетания
-      на <span class="hand">22.08.2026 г.</span>
-    </p>
-  </div>
-
-  <img class="ruling-cuffs slide-right" src="Cuffs.jpg.jpg" alt="Наручники">
-</section>
-
-<section class="place-section">
-  <div class="reveal">
-    <h2>I. МЕСТО ПРОВЕДЕНИЯ<br>ПРОЦЕССУАЛЬНЫХ ДЕЙСТВИЙ</h2>
-    <p>
-      Торжественное празднование задержания состоится по адресу:
-    </p>
-    <p>
-      <span class="hand">г. Степногорск,<br>ул. Парковая,<br>2 мкр, д. 79</span>
-    </p>
-    <p>в ресторане <b>Green Which</b></p>
-  </div>
-</section>
-
-<section class="program-section">
-  <div class="reveal">
-    <h2>II. ПРОГРАММА<br>ПРОЦЕССУАЛЬНЫХ ДЕЙСТВИЙ</h2>
-
-    <div class="program-row">
-      <b>18:00</b>
-      <span>сбор понятых</span>
-    </div>
-
-    <div class="program-row">
-      <b>18:20</b>
-      <span>официальное подтверждение задержания и обмен вещественными доказательствами — кольца, 2 шт.</span>
-    </div>
-
-    <div class="program-row">
-      <b>далее</b>
-      <span>банкет в честь успешного завершения операции, далее — свободные манёвры до полной капитуляции усталости</span>
-    </div>
-  </div>
-
-  <img class="evidence slide-right" src="Rings-bag.jpg.jpg" alt="Кольца">
-</section>
-
-<section class="dress-section">
-  <div class="reveal">
-    <h2>III. ФОРМА ОДЕЖДЫ ДЛЯ ПОНЯТЫХ<br>(ДРЕСС-КОД)</h2>
-    <p>
-      В целях соблюдения праздничной дисциплины предписывается:
-      стиль <b>классический / нарядный</b>, цветовая директива от светлых до темных оттенков.
-    </p>
-  </div>
-</section>
-
-<section class="gifts-section">
-  <div class="reveal">
-    <h2>IV. ПОРЯДОК ПЕРЕДАЧИ<br>МАТЕРИАЛЬНЫХ ДОКАЗАТЕЛЬСТВ</h2>
-    <p>
-      В ходе предварительной проверки установлено, что молодая семья обеспечена предметами быта.
-    </p>
-    <p>
-      В связи с этим разрешается передача подарков исключительно в денежной форме.
-    </p>
-  </div>
-
-  <img class="evidence money-img slide-left" src="Money-envelope.jpg.jpg" alt="Конверт">
-
-  <p class="reveal">
-    Средства будут направлены на развитие совместной стратегии и укрепление материально-технической базы семьи.
-  </p>
-</section>
-
-<section class="confirm-section">
-  <div class="reveal">
-    <h2>V. ДОПОЛНИТЕЛЬНЫЕ<br>РАСПОРЯЖЕНИЯ</h2>
-    <p>
-      Понятым рекомендуется прибыть вовремя, в установленном дресс-кодом виде и в полной готовности
-      к активному участию в праздничных процессуальных действиях.
-    </p>
-
+    
     <h2>VI. ЯВКА ПОНЯТОГО</h2>
+
     <p>
-      Для участия в процессуальных действиях просим подтвердить личное присутствие
-      до <span class="hand">31.07.2026</span>
+      Для участия в процессуальных действиях просим подтвердить
+      личное присутствие до
+      <span class="highlight-date">31.07.2026</span>
     </p>
 
     <p>И внести данные:</p>
-    <input class="input-line" type="text" placeholder="Введите ваше ФИО">
+
+    <input 
+      type="text" 
+      placeholder="Введите ваше ФИО"
+      class="guest-input"
+    />
 
     <p>
-      Настоящим подтверждается готовность лично присутствовать при приведении приговора
-      в исполнение и разделить один из важнейших моментов в жизни сторон.
+      Настоящим подтверждается готовность лично присутствовать
+      при приведении приговора в исполнение и разделить один
+      из важнейших моментов в жизни сторон.
     </p>
 
     <p>
-      Стороны дела будут искренне рады видеть указанного понятого в числе свидетелей создания новой семьи
-      и рассчитывают на активное участие в праздничных действиях и веселье без ограничений.
+      Стороны дела будут искренне рады видеть указанного понятого
+      в числе свидетелей создания новой семьи и рассчитывают
+      на активное участие в праздничных действиях и веселье
+      без ограничений.
     </p>
 
     <p>
-      Неявка рассматривается как уклонение от участия в историческом событии.
+      Неявка рассматривается как уклонение от участия
+      в историческом событии.
     </p>
 
-    <a class="send-btn" href="https://wa.me/77775340438" target="_blank">Отправить</a>
+    <a class="send-btn"
+       href="https://wa.me/77775340438"
+       target="_blank">
+       Отправить
+    </a>
+
   </div>
 </section>
 
 <section class="final-section">
   <div class="reveal">
+
     <h2>VII. ЗАКЛЮЧЕНИЕ</h2>
+
     <p>
-      Настоящий протокол вступает в силу с момента официального объявления граждан мужем и женой.
+      Настоящий протокол вступает в силу с момента официального
+      объявления граждан мужем и женой.
     </p>
 
     <div class="final-stamp">
       ПРИГОВОР:<br>
       ПОЖИЗНЕННО<br><br>
+
       МЕРА ПРЕСЕЧЕНИЯ:<br>
       БРАК<br><br>
+
       НАКАЗАНИЕ:<br>
       СЧАСТЬЕ БЕЗ ОГРАНИЧЕНИЙ
     </div>
 
-    <div class="hammer">⚖️</div>
+  </div>
+</section>
