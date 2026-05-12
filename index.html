@@ -529,7 +529,7 @@ p {
       Неявка рассматривается как уклонение от участия в историческом событии.
     </p>
 
-    <a class="send-btn" href="#">Отправить</a>
+    <a class="send-btn" href="https://wa.me/77775340438?text=Здравствуйте! Подтверждаю присутствие на свадьбе Даниила и Дианы." target="_blank">Отправить</a>
   </div>
 </section>
 
@@ -550,54 +550,3 @@ p {
     </div>
 
     <div class="hammer">⚖️</div>
-
-    <img class="final-car slide-right" src="Final-car.jpg.jpg" alt="УАЗик">
-  </div>
-</section>
-
-</main>
-
-<script>
-const openBtn = document.getElementById("openBtn");
-const openScreen = document.getElementById("openScreen");
-const music = document.getElementById("music");
-
-openBtn.addEventListener("click", async () => {
-  try {
-    await music.play();
-  } catch(e) {}
-  openScreen.classList.add("hide");
-});
-
-document.querySelectorAll(".cells").forEach(box => {
-  const text = box.dataset.text;
-  [...text].forEach((letter, i) => {
-    const span = document.createElement("span");
-    span.className = "cell";
-    span.textContent = letter;
-    span.style.transitionDelay = `${i * 0.05}s`;
-    box.appendChild(span);
-  });
-});
-
-const animated = document.querySelectorAll(".reveal, .slide-right, .slide-left, .person-row");
-
-function animateOnScroll() {
-  animated.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    const visible = rect.top < window.innerHeight - 80 && rect.bottom > 80;
-
-    if (visible) {
-      el.classList.add("active");
-    } else {
-      el.classList.remove("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", animateOnScroll);
-window.addEventListener("load", animateOnScroll);
-</script>
-
-</body>
-</html>
