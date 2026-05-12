@@ -3,476 +3,599 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Свадебное приглашение | Даниил и Диана</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Личное дело №001 | Даниил и Диана</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    background:#f7f7f5;
-    color:#2f2f2f;
-    font-family:'Cormorant Garamond', serif;
-    overflow-x:hidden;
+html {
+  scroll-behavior: smooth;
 }
 
-.hero{
-    min-height:100vh;
-    background:
-    linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.82)),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop');
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:40px 20px;
+body {
+  background: #d8d8d8;
+  color: #111;
+  font-family: "Courier New", monospace;
 }
 
-.hero-content{
-    max-width:700px;
+.site {
+  max-width: 430px;
+  margin: 0 auto;
+  background: #f6f1e7;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-.top-text{
-    letter-spacing:6px;
-    font-size:15px;
-    margin-bottom:25px;
-    color:#7d8ea3;
+section {
+  position: relative;
+  padding: 60px 24px;
+  background: #f6f1e7;
 }
 
-.names{
-    font-family:'Playfair Display', serif;
-    font-size:74px;
-    line-height:1;
-    font-weight:500;
-    margin-bottom:20px;
+h1, h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
 }
 
-.and{
-    font-size:40px;
-    color:#9fb7cf;
+h1 {
+  font-size: 36px;
 }
 
-.date{
-    font-size:34px;
-    margin-top:25px;
+h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
-section{
-    padding:90px 20px;
+p {
+  font-size: 16px;
+  line-height: 1.45;
+  margin: 16px 0;
 }
 
-.container{
-    width:100%;
-    max-width:900px;
-    margin:auto;
+.open-screen {
+  position: fixed;
+  inset: 0;
+  background: #f6f1e7;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: 0.8s;
 }
 
-.block{
-    background:white;
-    border-radius:24px;
-    padding:50px 35px;
-    box-shadow:0 10px 30px rgba(0,0,0,.05);
+.open-screen.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 
-h2{
-    font-family:'Playfair Display', serif;
-    font-size:48px;
-    margin-bottom:35px;
-    text-align:center;
-    color:#6e87a1;
+.open-box {
+  border: 2px solid #111;
+  padding: 50px 30px;
+  width: 82%;
 }
 
-.text{
-    font-size:30px;
-    line-height:1.6;
-    text-align:center;
+.open-box button {
+  margin-top: 40px;
+  border: 4px double #9d1f2f;
+  color: #9d1f2f;
+  background: transparent;
+  padding: 10px 25px;
+  font-size: 24px;
+  font-weight: 900;
+  transform: rotate(-5deg);
+  cursor: pointer;
 }
 
-.timeline{
-    display:flex;
-    flex-direction:column;
-    gap:35px;
+.cover {
+  min-height: 100vh;
+  border: 2px solid #111;
+  margin: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
 }
 
-.time-item{
-    display:flex;
-    gap:30px;
-    align-items:flex-start;
+.case-number {
+  font-size: 28px;
+  margin: 20px 0 55px;
 }
 
-.time{
-    min-width:120px;
-    font-size:42px;
-    color:#8fb0d1;
-    font-family:'Playfair Display', serif;
+.hand {
+  font-family: "Brush Script MT", "Comic Sans MS", cursive;
+  font-size: 28px;
+  border-bottom: 2px solid #111;
+  padding: 0 8px;
 }
 
-.time-text{
-    font-size:28px;
-    line-height:1.5;
+.protocol-section {
+  border: 2px solid #222;
+  margin: 24px;
+  padding: 36px 18px;
 }
 
-.location-img{
-    width:100%;
-    border-radius:20px;
-    margin-top:30px;
+.protocol-section h2 {
+  font-size: 34px;
 }
 
-.details{
-    display:grid;
-    gap:25px;
+.protocol-section h3 {
+  font-size: 21px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-.detail-box{
-    background:#f5f8fc;
-    border-radius:18px;
-    padding:25px;
+.person-row {
+  display: grid;
+  grid-template-columns: 1fr 118px;
+  gap: 12px;
+  align-items: start;
+  margin: 25px 0;
 }
 
-.detail-title{
-    font-size:34px;
-    margin-bottom:10px;
-    color:#7fa2c7;
+.person-photo {
+  width: 118px;
+  height: 160px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  border: 2px solid #222;
 }
 
-.detail-text{
-    font-size:26px;
-    line-height:1.5;
+.field {
+  margin-bottom: 14px;
 }
 
-.form{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-    margin-top:30px;
+.cells {
+  display: flex;
+  gap: 2px;
+  min-height: 27px;
 }
 
-input{
-    padding:18px;
-    border:none;
-    border-bottom:2px solid #b6c9dd;
-    background:transparent;
-    font-size:24px;
-    outline:none;
-    font-family:'Cormorant Garamond', serif;
+.cell {
+  width: 20px;
+  height: 25px;
+  border: 1.5px solid #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: 0.35s;
 }
 
-.send-btn{
-    margin-top:20px;
-    background:#b7d2ef;
-    color:#fff;
-    border:none;
-    border-radius:50px;
-    padding:18px 30px;
-    font-size:24px;
-    cursor:pointer;
-    text-decoration:none;
-    text-align:center;
-    transition:.3s;
+.active .cell {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.send-btn:hover{
-    background:#94b8df;
+.field-label {
+  width: 220px;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 3px;
 }
 
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-top:40px;
+.protocol-text {
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 22px 0;
 }
 
-.count-box{
-    width:120px;
-    height:120px;
-    border-radius:24px;
-    background:#eef5fc;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+.circumstances {
+  padding-left: 22px;
+  font-size: 16px;
+  line-height: 1.8;
 }
 
-.count-number{
-    font-size:42px;
-    color:#7fa2c7;
+.ruling-section {
+  min-height: 75vh;
+  padding-top: 85px;
+  overflow: hidden;
 }
 
-.count-label{
-    font-size:20px;
+.ruling-section h2 {
+  font-size: 34px;
 }
 
-footer{
-    text-align:center;
-    padding:70px 20px;
-    font-size:24px;
-    color:#8a8a8a;
+.ruling-text {
+  max-width: 270px;
+  position: relative;
+  z-index: 2;
 }
 
-@media(max-width:768px){
-
-.names{
-    font-size:52px;
+.ruling-cuffs {
+  width: 190px;
+  position: absolute;
+  right: 15px;
+  bottom: 80px;
+  z-index: 1;
 }
 
-h2{
-    font-size:38px;
+.place-section h2,
+.program-section h2,
+.dress-section h2,
+.gifts-section h2,
+.confirm-section h2,
+.final-section h2 {
+  font-size: 30px;
 }
 
-.text{
-    font-size:24px;
+.program-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 12px;
+  margin: 22px 0;
+  font-size: 16px;
+  line-height: 1.35;
 }
 
-.time{
-    min-width:90px;
-    font-size:32px;
+.evidence {
+  display: block;
+  max-width: 210px;
+  margin: 35px auto 0;
 }
 
-.time-text{
-    font-size:24px;
+.money-img {
+  max-width: 260px;
 }
 
-.detail-title{
-    font-size:28px;
+.input-line {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #111;
+  background: transparent;
+  height: 40px;
+  font-size: 17px;
+  font-family: inherit;
+  outline: none;
+  margin: 15px 0 25px;
 }
 
-.detail-text{
-    font-size:22px;
+.send-btn {
+  display: inline-block;
+  border: 3px solid #9d1f2f;
+  color: #111;
+  background: transparent;
+  text-decoration: none;
+  padding: 12px 36px;
+  font-family: Georgia, serif;
+  font-weight: 900;
+  font-size: 19px;
+  margin-top: 18px;
 }
 
+.final-stamp {
+  width: 190px;
+  height: 190px;
+  border: 5px double #9d1f2f;
+  border-radius: 50%;
+  color: #9d1f2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 30px auto;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  transform: rotate(-8deg);
 }
 
+.hammer {
+  font-size: 58px;
+  text-align: center;
+}
+
+.final-car {
+  width: 280px;
+  display: block;
+  margin: 35px auto 0;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: 0.8s ease;
+}
+
+.slide-right {
+  opacity: 0;
+  transform: translateX(130px);
+  transition: 0.9s ease;
+}
+
+.slide-left {
+  opacity: 0;
+  transform: translateX(-130px);
+  transition: 0.9s ease;
+}
+
+.active {
+  opacity: 1;
+  transform: translate(0);
+}
 </style>
 </head>
+
 <body>
 
-<section class="hero">
-<div class="hero-content">
-
-<div class="top-text">
-ПРИГЛАШЕНИЕ НА СВАДЬБУ
+<div class="open-screen" id="openScreen">
+  <div class="open-box">
+    <h1>Личное дело<br>№001</h1>
+    <p>о задержании граждан<br>с целью последующего<br>бракосочетания</p>
+    <button id="openBtn">ОТКРЫТЬ</button>
+  </div>
 </div>
 
-<div class="names">
-Даниил
-<div class="and">&</div>
-Диана
-</div>
+<audio id="music" loop>
+  <source src="Butyrka_-_A_dlya_vas_ya_nikto_48114684.mp3" type="audio/mpeg">
+</audio>
 
-<div class="date">
-22 августа 2026
-</div>
+<main class="site">
 
-</div>
+<section class="cover">
+  <div class="reveal">
+    <h1>Личное дело</h1>
+    <div class="case-number">№ <span class="hand">001</span></div>
+    <p>о задержании граждан<br>с целью последующего<br>бракосочетания</p>
+  </div>
 </section>
 
-<section>
-<div class="container">
-<div class="block">
+<section class="protocol-section">
+  <div class="reveal">
+    <h2>ПРОТОКОЛ</h2>
+    <h3>об административном задержании</h3>
+  </div>
 
-<h2>Дорогие гости</h2>
+  <div class="person-row reveal">
+    <div>
+      <p><b>Я, уполномоченное лицо, гражданин:</b></p>
 
-<div class="text">
-С огромной радостью приглашаем вас стать частью самого важного и счастливого дня нашей жизни.
-<br><br>
-Будем счастливы разделить этот момент вместе с вами.
-</div>
+      <div class="field">
+        <div class="cells" data-text="Черноволов"></div>
+        <div class="field-label">фамилия</div>
+      </div>
 
-</div>
-</div>
+      <div class="field">
+        <div class="cells" data-text="Даниил"></div>
+        <div class="field-label">имя</div>
+      </div>
+
+      <div class="field">
+        <div class="cells" data-text="Евгеньевич"></div>
+        <div class="field-label">отчество</div>
+      </div>
+    </div>
+
+    <img class="person-photo slide-right" src="Groom.jpg.jpg" alt="Даниил">
+  </div>
+
+  <p class="protocol-text reveal">
+    Действуя на основании личных намерений, устойчивых чувств и окончательного решения
+    о создании семьи, произвел задержание гражданки:
+  </p>
+
+  <div class="person-row reveal">
+    <div>
+      <div class="field">
+        <div class="cells" data-text="Ермолаева"></div>
+        <div class="field-label">фамилия</div>
+      </div>
+
+      <div class="field">
+        <div class="cells" data-text="Диана"></div>
+        <div class="field-label">имя</div>
+      </div>
+
+      <div class="field">
+        <div class="cells" data-text="Михайловна"></div>
+        <div class="field-label">отчество</div>
+      </div>
+    </div>
+
+    <img class="person-photo slide-right" src="Bride.jpg.jpg" alt="Диана">
+  </div>
+
+  <p class="protocol-text reveal">
+    Действуя по предварительному взаимному согласию, вступили в сговор с целью создания семьи,
+    совместного ведения хозяйства и пожизненного союза.
+  </p>
+
+  <p class="protocol-text reveal">
+    В ходе проверки выявлены следующие обстоятельства:
+  </p>
+
+  <ol class="circumstances reveal">
+    <li>незаконное завладение сердцем;</li>
+    <li>систематическое присутствие в мыслях;</li>
+    <li>планирование совместного будущего;</li>
+    <li>намерение обменяться кольцами;</li>
+    <li>отсутствие сопротивления задержанию.</li>
+  </ol>
 </section>
 
-<section>
-<div class="container">
-<div class="block">
+<section class="ruling-section">
+  <div class="ruling-text reveal">
+    <h2>ПОСТАНОВЛЕНО</h2>
+    <p>
+      Назначить процедуру официального бракосочетания
+      на <span class="hand">22.08.2026 г.</span>
+    </p>
+  </div>
 
-<h2>Тайминг дня</h2>
-
-<div class="timeline">
-
-<div class="time-item">
-<div class="time">16:30</div>
-<div class="time-text">
-Сбор гостей и welcome-зона
-</div>
-</div>
-
-<div class="time-item">
-<div class="time">17:00</div>
-<div class="time-text">
-Торжественная церемония
-</div>
-</div>
-
-<div class="time-item">
-<div class="time">18:00</div>
-<div class="time-text">
-Праздничный банкет
-</div>
-</div>
-
-<div class="time-item">
-<div class="time">23:00</div>
-<div class="time-text">
-Завершение вечера
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
+  <img class="ruling-cuffs slide-right" src="Cuffs.jpg.jpg" alt="Наручники">
 </section>
 
-<section>
-<div class="container">
-<div class="block">
-
-<h2>Место проведения</h2>
-
-<div class="text">
-г. Астана
-<br>
-Ресторан «Название»
-</div>
-
-<img class="location-img" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200&auto=format&fit=crop">
-
-</div>
-</div>
+<section class="place-section">
+  <div class="reveal">
+    <h2>I. МЕСТО ПРОВЕДЕНИЯ<br>ПРОЦЕССУАЛЬНЫХ ДЕЙСТВИЙ</h2>
+    <p>
+      Торжественное празднование задержания состоится по адресу:
+    </p>
+    <p>
+      <span class="hand">г. Степногорск,<br>ул. Парковая,<br>2 мкр, д. 79</span>
+    </p>
+    <p>в ресторане <b>Green Which</b></p>
+  </div>
 </section>
 
-<section>
-<div class="container">
-<div class="block">
+<section class="program-section">
+  <div class="reveal">
+    <h2>II. ПРОГРАММА<br>ПРОЦЕССУАЛЬНЫХ ДЕЙСТВИЙ</h2>
 
-<h2>Детали</h2>
+    <div class="program-row">
+      <b>18:00</b>
+      <span>сбор понятых</span>
+    </div>
 
-<div class="details">
+    <div class="program-row">
+      <b>18:20</b>
+      <span>официальное подтверждение задержания и обмен вещественными доказательствами — кольца, 2 шт.</span>
+    </div>
 
-<div class="detail-box">
-<div class="detail-title">
-Dress Code
-</div>
+    <div class="program-row">
+      <b>далее</b>
+      <span>банкет в честь успешного завершения операции, далее — свободные манёвры до полной капитуляции усталости</span>
+    </div>
+  </div>
 
-<div class="detail-text">
-Будем рады видеть вас в светлых, пастельных и голубых оттенках.
-</div>
-</div>
-
-<div class="detail-box">
-<div class="detail-title">
-Подарки
-</div>
-
-<div class="detail-text">
-Ваше присутствие — главный подарок для нас.
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
+  <img class="evidence slide-right" src="Rings-bag.jpg.jpg" alt="Кольца">
 </section>
 
-<section>
-<div class="container">
-<div class="block">
-
-<h2>Подтверждение присутствия</h2>
-
-<div class="text">
-Пожалуйста, подтвердите своё присутствие до 31.07.2026
-</div>
-
-<div class="form">
-
-<input type="text" placeholder="Ваше имя">
-
-<a class="send-btn" href="https://wa.me/77775340438" target="_blank">
-Подтвердить присутствие
-</a>
-
-</div>
-
-</div>
-</div>
+<section class="dress-section">
+  <div class="reveal">
+    <h2>III. ФОРМА ОДЕЖДЫ ДЛЯ ПОНЯТЫХ<br>(ДРЕСС-КОД)</h2>
+    <p>
+      В целях соблюдения праздничной дисциплины предписывается:
+      стиль <b>классический / нарядный</b>, цветовая директива от светлых до темных оттенков.
+    </p>
+  </div>
 </section>
 
-<section>
-<div class="container">
-<div class="block">
+<section class="gifts-section">
+  <div class="reveal">
+    <h2>IV. ПОРЯДОК ПЕРЕДАЧИ<br>МАТЕРИАЛЬНЫХ ДОКАЗАТЕЛЬСТВ</h2>
+    <p>
+      В ходе предварительной проверки установлено, что молодая семья обеспечена предметами быта.
+    </p>
+    <p>
+      В связи с этим разрешается передача подарков исключительно в денежной форме.
+    </p>
+  </div>
 
-<h2>До свадьбы осталось</h2>
+  <img class="evidence money-img slide-left" src="Money-envelope.jpg.jpg" alt="Конверт">
 
-<div class="countdown">
-
-<div class="count-box">
-<div class="count-number" id="days">00</div>
-<div class="count-label">дней</div>
-</div>
-
-<div class="count-box">
-<div class="count-number" id="hours">00</div>
-<div class="count-label">часов</div>
-</div>
-
-<div class="count-box">
-<div class="count-number" id="minutes">00</div>
-<div class="count-label">минут</div>
-</div>
-
-<div class="count-box">
-<div class="count-number" id="seconds">00</div>
-<div class="count-label">секунд</div>
-</div>
-
-</div>
-
-</div>
-</div>
+  <p class="reveal">
+    Средства будут направлены на развитие совместной стратегии и укрепление материально-технической базы семьи.
+  </p>
 </section>
 
-<footer>
-С любовью, Даниил и Диана
-</footer>
+<section class="confirm-section">
+  <div class="reveal">
+    <h2>V. ДОПОЛНИТЕЛЬНЫЕ<br>РАСПОРЯЖЕНИЯ</h2>
+    <p>
+      Понятым рекомендуется прибыть вовремя, в установленном дресс-кодом виде и в полной готовности
+      к активному участию в праздничных процессуальных действиях.
+    </p>
+
+    <h2>VI. ЯВКА ПОНЯТОГО</h2>
+    <p>
+      Для участия в процессуальных действиях просим подтвердить личное присутствие
+      до <span class="hand">31.07.2026</span>
+    </p>
+
+    <p>И внести данные:</p>
+    <input class="input-line" type="text" placeholder="Введите ваше ФИО">
+
+    <p>
+      Настоящим подтверждается готовность лично присутствовать при приведении приговора
+      в исполнение и разделить один из важнейших моментов в жизни сторон.
+    </p>
+
+    <p>
+      Стороны дела будут искренне рады видеть указанного понятого в числе свидетелей создания новой семьи
+      и рассчитывают на активное участие в праздничных действиях и веселье без ограничений.
+    </p>
+
+    <p>
+      Неявка рассматривается как уклонение от участия в историческом событии.
+    </p>
+
+    <a class="send-btn" href="https://wa.me/77775340438" target="_blank">Отправить</a>
+  </div>
+</section>
+
+<section class="final-section">
+  <div class="reveal">
+    <h2>VII. ЗАКЛЮЧЕНИЕ</h2>
+    <p>
+      Настоящий протокол вступает в силу с момента официального объявления граждан мужем и женой.
+    </p>
+
+    <div class="final-stamp">
+      ПРИГОВОР:<br>
+      ПОЖИЗНЕННО<br><br>
+      МЕРА ПРЕСЕЧЕНИЯ:<br>
+      БРАК<br><br>
+      НАКАЗАНИЕ:<br>
+      СЧАСТЬЕ БЕЗ ОГРАНИЧЕНИЙ
+    </div>
+
+    <div class="hammer">⚖️</div>
+
+    
+</section>
+
+</main>
 
 <script>
+const openBtn = document.getElementById("openBtn");
+const openScreen = document.getElementById("openScreen");
+const music = document.getElementById("music");
 
-const weddingDate = new Date("August 22, 2026 16:30:00").getTime();
+openBtn.addEventListener("click", async () => {
+  try {
+    await music.play();
+  } catch(e) {}
+  openScreen.classList.add("hide");
+});
 
-const timer = setInterval(function(){
+document.querySelectorAll(".cells").forEach(box => {
+  const text = box.dataset.text;
+  [...text].forEach((letter, i) => {
+    const span = document.createElement("span");
+    span.className = "cell";
+    span.textContent = letter;
+    span.style.transitionDelay = `${i * 0.05}s`;
+    box.appendChild(span);
+  });
+});
 
-const now = new Date().getTime();
+const animated = document.querySelectorAll(".reveal, .slide-right, .slide-left, .person-row");
 
-const distance = weddingDate - now;
+function animateOnScroll() {
+  animated.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const visible = rect.top < window.innerHeight - 80 && rect.bottom > 80;
 
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (visible) {
+      el.classList.add("active");
+    } else {
+      el.classList.remove("active");
+    }
+  });
+}
 
-document.getElementById("days").innerHTML = days;
-document.getElementById("hours").innerHTML = hours;
-document.getElementById("minutes").innerHTML = minutes;
-document.getElementById("seconds").innerHTML = seconds;
-
-},1000);
-
+window.addEventListener("scroll", animateOnScroll);
+window.addEventListener("load", animateOnScroll);
 </script>
 
 </body>
