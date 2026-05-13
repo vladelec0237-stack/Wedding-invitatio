@@ -3,360 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Даниил & Диана | Wedding invitation</title>
+<title>Варианты приглашения</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
 body{
-  background:#d6d6d6;
-  font-family:Arial, sans-serif;
-  color:#202020;
-}
-
-.site{
-  max-width:430px;
-  margin:0 auto;
-  background:#fff;
-  overflow:hidden;
-}
-
-.hero{
-  height:100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.35)),
-    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=900");
-  background-size:cover;
-  background-position:center;
+  margin:0;
+  min-height:100vh;
+  background:#f6f1e7;
+  font-family:Georgia, serif;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  color:white;
-  padding:30px;
+  color:#222;
 }
-
-.names{
-  font-family:Georgia,serif;
-  font-size:58px;
-  line-height:.9;
-  letter-spacing:-2px;
+.box{
+  width:90%;
+  max-width:430px;
+  padding:40px 25px;
+  border:1px solid #c8bfae;
+  background:rgba(255,255,255,.55);
 }
-
-.date{
-  margin-top:22px;
-  font-size:28px;
-  letter-spacing:3px;
+h1{
+  font-size:34px;
+  font-weight:400;
+  margin-bottom:10px;
 }
-
-section{
-  padding:70px 28px;
-  text-align:center;
-}
-
-h2{
-  font-size:32px;
-  letter-spacing:3px;
-  margin-bottom:25px;
-}
-
 p{
-  font-size:17px;
-  line-height:1.55;
-  margin:18px 0;
+  font-size:18px;
+  margin-bottom:30px;
 }
-
-.blue{
-  color:#8bb7d6;
-}
-
-.photo{
-  width:100%;
-  margin:35px 0;
-  filter:grayscale(100%);
-}
-
-.vertical-title{
-  writing-mode:vertical-rl;
-  transform:rotate(180deg);
-  font-family:Georgia,serif;
-  font-size:52px;
-  letter-spacing:4px;
-  float:left;
-  margin-right:15px;
-}
-
-.dress{
-  display:flex;
-  justify-content:center;
-  gap:18px;
-  margin:25px 0;
-}
-
-.circle{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-}
-
-.c1{background:#f3eadb}
-.c2{background:#8bb7d6}
-.c3{background:#111}
-
-.program{
-  border:1px solid #222;
-  padding:25px 18px;
-  text-align:left;
-  margin-top:25px;
-}
-
-.row{
-  margin:24px 0;
-}
-
-.time{
-  font-weight:bold;
-  letter-spacing:2px;
-  color:#8bb7d6;
-}
-
-.map-btn,.send-btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 26px;
-  border:1px solid #111;
-  border-radius:30px;
+a{
+  display:block;
   text-decoration:none;
-  color:#111;
-  font-size:15px;
-}
-
-.dark{
-  background:#202020;
-  color:#fff;
-}
-
-.dark .send-btn{
-  border-color:#fff;
-  color:#fff;
-}
-
-input{
-  width:100%;
-  border:none;
-  border-bottom:1px solid #222;
-  padding:14px;
-  font-size:16px;
-  margin:20px 0;
-  text-align:center;
-}
-
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:30px;
-}
-
-.count{
-  width:70px;
-}
-
-.num{
-  font-size:30px;
-  color:#8bb7d6;
-}
-
-.label{
-  font-size:11px;
+  color:#222;
+  border:1px solid #222;
+  padding:16px;
+  margin:14px 0;
+  font-size:18px;
   letter-spacing:1px;
 }
-
-.reveal{
-  opacity:0;
-  transform:translateY(35px);
-  transition:.9s;
-}
-
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
+a:hover{
+  background:#222;
+  color:white;
 }
 </style>
 </head>
 
 <body>
+  <div class="box">
+    <h1>Даниил & Диана</h1>
+    <p>Выбери вариант приглашения</p>
 
-<main class="site">
-
-<section class="hero">
-  <div>
-    <div class="names">Даниил<br>&<br>Диана</div>
-    <div class="date">22.08.2026</div>
+    <a href="protocol.html">Вариант 1 — Протокол</a>
+    <a href="silk.html">Вариант 2 — Молочный шёлк</a>
+    <a href="black-white.html">Вариант 3 — Чёрно-белый стиль</a>
   </div>
-</section>
-
-<section>
-  <div class="reveal">
-    <h2>ДОРОГИЕ РОДНЫЕ<br>И БЛИЗКИЕ</h2>
-    <p>
-      Приглашаем вас разделить радость особенного для нас события
-      и стать частью начала нашей семейной истории.
-    </p>
-    <p class="blue">Будем счастливы видеть вас рядом.</p>
-  </div>
-</section>
-
-<section>
-  <div class="reveal">
-    <h2>ДО СВАДЬБЫ</h2>
-    <p>осталось совсем немного времени</p>
-
-    <div class="countdown">
-      <div class="count"><div class="num" id="days">00</div><div class="label">дней</div></div>
-      <div class="count"><div class="num" id="hours">00</div><div class="label">часов</div></div>
-      <div class="count"><div class="num" id="mins">00</div><div class="label">минут</div></div>
-      <div class="count"><div class="num" id="secs">00</div><div class="label">секунд</div></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="reveal">
-    <div class="vertical-title">DRESS CODE</div>
-    <img class="photo" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=900">
-
-    <p>Основные оттенки:</p>
-    <div class="dress">
-      <div class="circle c1"></div>
-      <div class="circle c2"></div>
-      <div class="circle c3"></div>
-    </div>
-
-    <p>
-      Нам будет очень приятно, если вы поддержите
-      цветовую гамму торжества.
-    </p>
-  </div>
-</section>
-
-<section>
-  <div class="reveal">
-    <h2>ПРОГРАММА ДНЯ</h2>
-
-    <div class="program">
-      <div class="row">
-        <div class="time">18:00 — СБОР ГОСТЕЙ</div>
-        <p>Встреча гостей и начало вечера.</p>
-      </div>
-
-      <div class="row">
-        <div class="time">18:20 — ЦЕРЕМОНИЯ</div>
-        <p>Торжественное начало и обмен кольцами.</p>
-      </div>
-
-      <div class="row">
-        <div class="time">19:00 — БАНКЕТ</div>
-        <p>Ужин, поздравления, танцы и веселье.</p>
-      </div>
-
-      <div class="row">
-        <div class="time">23:00 — ЗАВЕРШЕНИЕ</div>
-        <p>Тёплое окончание праздничного вечера.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="reveal">
-    <h2>ГДЕ ПРОЙДЁТ?</h2>
-    <p>
-      г. Степногорск<br>
-      ул. Парковая, 2 мкр, д. 79<br>
-      ресторан <b>Green Which</b>
-    </p>
-
-    <img class="photo" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=900">
-
-    <a class="map-btn" href="https://2gis.kz/search/Степногорск%20Парковая%202%20мкр%2079" target="_blank">
-      Открыть карту
-    </a>
-  </div>
-</section>
-
-<section class="dark">
-  <div class="reveal">
-    <h2>ДЕТАЛИ</h2>
-    <p>
-      Мы не хотим обременять вас выбором подарка,
-      поэтому будем рады вкладу в семейный бюджет.
-    </p>
-    <p>
-      Главное для нас — ваше присутствие на свадьбе.
-    </p>
-  </div>
-</section>
-
-<section>
-  <div class="reveal">
-    <h2>АНКЕТА ГОСТЯ</h2>
-    <p>
-      Пожалуйста, подтвердите своё присутствие до
-      <span class="blue">31.07.2026</span>.
-    </p>
-
-    <input type="text" placeholder="Ваше имя и фамилия">
-
-    <a class="send-btn" href="https://wa.me/77775340438" target="_blank">
-      Подтвердить приглашение
-    </a>
-  </div>
-</section>
-
-<section>
-  <div class="reveal">
-    <h2>ЖДЁМ ВАС</h2>
-    <p class="blue">С любовью, Даниил & Диана</p>
-  </div>
-</section>
-
-</main>
-
-<script>
-const items=document.querySelectorAll(".reveal");
-
-function show(){
-  items.forEach(el=>{
-    const rect=el.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 80){
-      el.classList.add("active");
-    }
-  });
-}
-
-window.addEventListener("scroll",show);
-window.addEventListener("load",show);
-
-function countdown(){
-  const wedding=new Date("2026-08-22T18:00:00").getTime();
-  const now=new Date().getTime();
-  const diff=wedding-now;
-
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff/(1000*60*60))%24);
-  const m=Math.floor((diff/(1000*60))%60);
-  const s=Math.floor((diff/1000)%60);
-
-  document.getElementById("days").textContent=d;
-  document.getElementById("hours").textContent=h;
-  document.getElementById("mins").textContent=m;
-  document.getElementById("secs").textContent=s;
-}
-
-countdown();
-setInterval(countdown,1000);
-</script>
-
 </body>
 </html>
