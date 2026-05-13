@@ -1,1 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Приглашение на свадьбу | Даниил и Диана</title>
 
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family: Georgia, "Times New Roman", serif;
+  color:#3b3b3b;
+  background:#f5f1e9;
+}
+
+.site{
+  max-width:430px;
+  margin:0 auto;
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.72)),
+    url("https://images.unsplash.com/photo-1615874694520-474822394e73?q=80&w=900");
+  background-size:cover;
+  background-attachment:fixed;
+}
+
+section{
+  min-height:100vh;
+  padding:70px 28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+}
+
+.card{
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(160,190,210,.55);
+  padding:42px 24px;
+  box-shadow:0 20px 60px rgba(130,150,160,.18);
+  backdrop-filter:blur(8px);
+}
+
+.small{
+  letter-spacing:4px;
+  font-size:13px;
+  text-transform:uppercase;
+  color:#7899ad;
+  margin-bottom:35px;
+}
+
+h1{
+  font-size:43px;
+  font-weight:400;
+  line-height:1.15;
+  letter-spacing:2px;
+}
+
+h2{
+  font-size:34px;
+  font-weight:400;
+  letter-spacing:2px;
+  margin-bottom:16px;
+}
+
+.script{
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:30px;
+  color:#8fb8cf;
+  margin-bottom:25px;
+}
+
+p{
+  font-size:17px;
+  line-height:1.7;
+  margin:14px 0;
+}
+
+.date{
+  margin-top:36px;
+  font-size:34px;
+  letter-spacing:3px;
+  color:#7899ad;
+}
+
+.line{
+  width:1px;
+  height:70px;
+  background:#b9cbd6;
+  margin:35px auto;
+}
+
+.time-row{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:18px;
+  text-align:left;
+  margin:26px 0;
+  align-items:start;
+}
+
+.time{
+  font-size:28px;
+  font-style:italic;
+  color:#7899ad;
+}
+
+.place-img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  margin:25px 0;
+  filter:saturate(.75);
+}
+
+.input{
+  width:100%;
+  height:42px;
+  border:1px solid #c7d7df;
+  background:rgba(255,255,255,.8);
+  padding:0 12px;
+  margin:20px 0;
+  font-size:15px;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  border:1px solid #8fb8cf;
+  color:#3b3b3b;
+  text-decoration:none;
+  border-radius:40px;
+  background:rgba(255,255,255,.55);
+  margin-top:12px;
+}
+
+.blue{
+  color:#7899ad;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:.9s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<main class="site">
+
+<section>
+  <div class="card reveal">
+    <div class="small">Приглашение на свадьбу</div>
+    <h1>Даниил<br>&<br>Диана</h1>
+    <div class="date">22.08.2026</div>
+  </div>
+</section>
+
+<section>
+  <div class="card reveal">
+    <h2>Родные и близкие!</h2>
+    <div class="script">Мы женимся!</div>
+    <p>
+      С большой радостью приглашаем вас
+      на праздник самого важного события
+      в нашей жизни — дня нашей свадьбы.
+    </p>
+    <div class="line"></div>
+    <p class="blue">22 августа 2026 года</p>
+    <p>
+      Мы очень хотим, чтобы в этот день
+      с нами рядом были самые дорогие нам люди.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="card reveal">
+    <h2>Локация</h2>
+    <div class="script">Место проведения</div>
+    <p>Будем ждать вас по адресу:</p>
+    <p>
+      г. Степногорск,<br>
+      ул. Парковая, 2 мкр, д. 79<br>
+      ресторан <b>Green Which</b>
+    </p>
+    <img class="place-img" src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=900" alt="Ресторан">
+  </div>
+</section>
+
+<section>
+  <div class="card reveal">
+    <h2>Время</h2>
+    <div class="script">Программа дня</div>
+
+    <div class="time-row">
+      <div class="time">18:00</div>
+      <p>сбор гостей</p>
+    </div>
+
+    <div class="time-row">
+      <div class="time">18:20</div>
+      <p>торжественное начало и обмен кольцами</p>
+    </div>
+
+    <div class="time-row">
+      <div class="time">19:00</div>
+      <p>банкет, поздравления, танцы и тёплые моменты</p>
+    </div>
+
+    <div class="time-row">
+      <div class="time">22:00</div>
+      <p>свадебный торт и продолжение вечера</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card reveal">
+    <h2>Дресс-код</h2>
+    <div class="script">Будем благодарны</div>
+    <p>
+      Просим поддержать атмосферу праздника
+      в классическом или нарядном стиле.
+    </p>
+    <p>
+      Цветовая гамма: светлые, молочные,
+      серые, голубые и тёмные оттенки.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="card reveal">
+    <h2>Анкета гостя</h2>
+    <div class="script">Ждём вас!</div>
+    <p>
+      Пожалуйста, подтвердите своё присутствие
+      до <span class="blue">31.07.2026</span>.
+    </p>
+
+    <input class="input" placeholder="Ваше имя и фамилия">
+
+    <a class="btn" href="https://wa.me/77000000000?text=Здравствуйте! Подтверждаю присутствие на свадьбе Даниила и Дианы." target="_blank">
+      Подтвердить приглашение
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="card reveal">
+    <div class="small">До свадьбы осталось</div>
+    <h2 id="timer">...</h2>
+    <div class="script">Даниил & Диана</div>
+  </div>
+</section>
+
+</main>
+
+<script>
+const items=document.querySelectorAll(".reveal");
+
+function show(){
+  items.forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    if(rect.top < window.innerHeight-80){
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll",show);
+window.addEventListener("load",show);
+
+function timer(){
+  const wedding=new Date("2026-08-22T18:00:00");
+  const now=new Date();
+  const diff=wedding-now;
+
+  if(diff<=0){
+    document.getElementById("timer").textContent="Сегодня!";
+    return;
+  }
+
+  const days=Math.floor(diff/(1000*60*60*24));
+  const hours=Math.floor((diff/(1000*60*60))%24);
+  const mins=Math.floor((diff/(1000*60))%60);
+
+  document.getElementById("timer").innerHTML=
+    days+" дней<br>"+hours+" часов<br>"+mins+" минут";
+}
+
+timer();
+setInterval(timer,60000);
+</script>
+
+</body>
+</html>
