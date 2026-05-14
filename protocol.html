@@ -540,7 +540,6 @@ bride-photo{
     <a class="send-btn" href="https://wa.me/77772178519" target="_blank">Отправить Даниилу</a>
   </div>
   <a class="send-btn" href="https://wa.me/7775340438" target="_blank">Отправить Диане</a>
-    </div>
 </section>
 
 <section class="final-section">
@@ -549,6 +548,7 @@ bride-photo{
     <p>
       Настоящий протокол вступает в силу с момента официального объявления граждан мужем и женой.
     </p>
+    </div>
 </section>
 
 </main>
@@ -601,5 +601,32 @@ bride-photo{
 }
 </style>
 
+  <script>
+const openBtn = document.getElementById("openBtn");
+const openScreen = document.getElementById("openScreen");
+const music = document.getElementById("music");
+
+openBtn.addEventListener("click", function () {
+  openScreen.classList.add("hide");
+  music.play().catch(() => {});
+});
+
+function animateOnScroll() {
+  const elements = document.querySelectorAll(".reveal, .slide-right, .slide-left");
+
+  elements.forEach((el) => {
+    const position = el.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (position < screenHeight - 80) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", animateOnScroll);
+window.addEventListener("load", animateOnScroll);
+</script>
+  
 </body>
 </html>
