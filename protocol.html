@@ -600,6 +600,21 @@ p {
   }
 }
 </style>
+<script>
+function animateOnScroll() {
+  document.querySelectorAll('.reveal, .slide-right, .slide-left').forEach(function(el) {
+    const rect = el.getBoundingClientRect();
 
+    if (rect.top < window.innerHeight - 50) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', animateOnScroll);
+window.addEventListener('load', animateOnScroll);
+
+animateOnScroll();
+</script>
 </body>
 </html>
