@@ -553,96 +553,53 @@ bride-photo{
 
 </main>
 
-<script>
-const openBtn = document.getElementById("openBtn");
-const openScreen = document.getElementById("openScreen");
-const music = document.getElementById("music");
+<section class="final-images">
 
-openBtn.addEventListener("click", async () => {
-  try {
-    await music.play();
-  } catch(e) {}
-  openScreen.classList.add("hide");
-});
+  <img class="prigovor-img" src="prigovor.png" alt="Приговор">
 
-document.querySelectorAll(".cells").forEach(box => {
-  const text = box.dataset.text;
-  [...text].forEach((letter, i) => {
-    const span = document.createElement("span");
-    span.className = "cell";
-    span.textContent = letter;
-    span.style.transitionDelay = `${i * 0.05}s`;
-    box.appendChild(span);
-  });
-});
+  <div class="car-road">
+    <img class="final-car" src="police-love.png" alt="Машина">
+  </div>
 
-const animated = document.querySelectorAll(".reveal, .slide-right, .slide-left, .person-row");
-
-function animateOnScroll() {
-  animated.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    const visible = rect.top < window.innerHeight - 80 && rect.bottom > 80;
-
-    if (visible) {
-      el.classList.add("active");
-    } else {
-      el.classList.remove("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", animateOnScroll);
-window.addEventListener("load", animateOnScroll);
-</script>
-
-  <div class="prigovor-block">
-    <img src="images/prigovor.jpg.PNG" alt="Приговор пожизненно вместе">
-</div>
+</section>
 
 <style>
-.prigovor-block{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 80px;
-    margin-bottom: 40px;
+.final-images{
+  margin-top: 80px;
+  padding-bottom: 60px;
+  overflow: hidden;
 }
 
-.prigovor-block img{
-    width: 320px;
-    max-width: 90%;
-}
-</style>
-
-  <div class="police-car-animation">
-    <img src="police-car.jpg.PNG" alt="Полицейская машина">
-</div>
-
-<style>
-.police-car-animation{
-    position: relative;
-    width: 100%;
-    height: 350px;
-    overflow: hidden;
-    margin-top: 80px;
+.prigovor-img{
+  display: block;
+  width: 320px;
+  max-width: 90%;
+  margin: 0 auto 70px auto;
 }
 
-.police-car-animation img{
-    position: absolute;
-    width: 500px;
+.car-road{
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+}
+
+.final-car{
+  position: absolute;
+  width: 520px;
+  max-width: none;
+  right: -600px;
+  bottom: 0;
+  animation: carMove 10s linear infinite;
+}
+
+@keyframes carMove{
+  from{
     right: -600px;
-    bottom: 0;
-    animation: policeRide 12s linear infinite;
-}
-  
-@keyframes policeRide{
-    0%{
-        right: -600px;
-    }
-
-    100%{
-        right: 120%;
-    }
+  }
+  to{
+    right: 110%;
+  }
 }
 </style>
   
