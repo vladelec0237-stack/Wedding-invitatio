@@ -601,31 +601,11 @@ p {
 }
 </style>
 
-  <script>
-const openBtn = document.getElementById("openBtn");
-const openScreen = document.getElementById("openScreen");
-const music = document.getElementById("music");
-
-openBtn.addEventListener("click", function () {
-  openScreen.classList.add("hide");
-  music.play().catch(() => {});
-});
-
-function animateOnScroll() {
-  const elements = document.querySelectorAll(".reveal, .slide-right, .slide-left");
-
-  elements.forEach((el) => {
-    const position = el.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
-
-    if (position < screenHeight - 80) {
-      el.classList.add("active");
-    }
-  });
+<script>
+function openInvitation() {
+  document.getElementById('openScreen').style.display = 'none';
 }
-
-window.addEventListener("scroll", animateOnScroll);
-window.addEventListener("load", animateOnScroll);
 </script>
+
 </body>
 </html>
