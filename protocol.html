@@ -551,21 +551,22 @@ p {
     </div>
 </section>
 
-</main>
-
-  <section class="final-images">
+<section class="final-images">
   <img src="Prigovor.jpg.PNG" class="prigovor-img" alt="Приговор">
 
   <div class="car-road">
-    <img src="Final-car.jpg.PNG" class="final-car" alt="Машина">
+    <img src="Final-car.jpg.PNG" class="final-car-ride" alt="Машина">
   </div>
 </section>
 
+</main>
+
 <style>
 .final-images {
-  margin-top: 80px;
+  margin-top: 40px;
   padding-bottom: 80px;
   overflow: hidden;
+  background: #f6f1e7;
 }
 
 .prigovor-img {
@@ -582,7 +583,7 @@ p {
   position: relative;
 }
 
-.final-car {
+.final-car-ride {
   position: absolute;
   width: 520px;
   max-width: none;
@@ -595,26 +596,55 @@ p {
   0% {
     right: -600px;
   }
+
   100% {
     right: 120%;
   }
 }
 </style>
+
 <script>
+const openScreen = document.getElementById("openScreen");
+const openButton = openScreen.querySelector("button");
+const music = document.getElementById("music");
+
+openButton.addEventListener("click", function () {
+  openScreen.style.display = "none";
+
+  if (music) {
+    music.play().catch(function () {});
+  }
+
+  animateOnScroll();
+});
+
+document.querySelectorAll(".cells").forEach(function (box) {
+  const text = box.dataset.text;
+
+  box.innerHTML = "";
+
+  text.split("").forEach(function (letter, index) {
+    const cell = document.createElement("div");
+    cell.className = "cell";
+    cell.textContent = letter;
+    cell.style.transitionDelay = index * 0.04 + "s";
+    box.appendChild(cell);
+  });
+});
+
 function animateOnScroll() {
-  document.querySelectorAll('.reveal, .slide-right, .slide-left').forEach(function(el) {
+  document.querySelectorAll(".reveal, .slide-right, .slide-left").forEach(function (el) {
     const rect = el.getBoundingClientRect();
 
-    if (rect.top < window.innerHeight - 50) {
-      el.classList.add('active');
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add("active");
     }
   });
 }
 
-window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('load', animateOnScroll);
-
-animateOnScroll();
+window.addEventListener("scroll", animateOnScroll);
+window.addEventListener("load", animateOnScroll);
 </script>
+
 </body>
 </html>
