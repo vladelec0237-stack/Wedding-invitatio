@@ -342,7 +342,7 @@ p {
   <div class="open-box">
     <h1>Личное дело<br>№001</h1>
     <p>о задержании граждан<br>с целью последующего<br>бракосочетания</p>
-    <button onclick="document.getElementById('openScreen').style.display='none'">ОТКРЫТЬ</button>
+    <button>ОТКРЫТЬ</button>
   </div>
 </div>
 
@@ -559,8 +559,6 @@ p {
   </div>
 </section>
 
-</main>
-
 <style>
 .final-images {
   margin-top: 40px;
@@ -571,56 +569,44 @@ p {
 
 .prigovor-img {
   display: block;
-  width: 320px;
-  max-width: 90%;
+  width: 360px;
+  max-width: 92%;
+  height: auto;
   margin: 0 auto 70px;
+  object-fit: contain;
 }
 
 .car-road {
   width: 100%;
-  height: 260px;
+  height: 360px;
   overflow: hidden;
   position: relative;
 }
 
 .final-car-ride {
   position: absolute;
-  width: 520px;
+  width: 420px;
   max-width: none;
-  right: -600px;
-  bottom: 0;
-  animation: carMove 10s linear infinite;
+  height: auto;
+  bottom: 20px;
+  right: -460px;
+  animation: carMove 12s linear infinite;
 }
 
 @keyframes carMove {
   0% {
-    right: -600px;
+    right: -460px;
   }
 
   100% {
-    right: 120%;
+    right: 100%;
   }
 }
 </style>
 
 <script>
-const openScreen = document.getElementById("openScreen");
-const openButton = openScreen.querySelector("button");
-const music = document.getElementById("music");
-
-openButton.addEventListener("click", function () {
-  openScreen.style.display = "none";
-
-  if (music) {
-    music.play().catch(function () {});
-  }
-
-  animateOnScroll();
-});
-
 document.querySelectorAll(".cells").forEach(function (box) {
   const text = box.dataset.text;
-
   box.innerHTML = "";
 
   text.split("").forEach(function (letter, index) {
@@ -642,9 +628,22 @@ function animateOnScroll() {
   });
 }
 
+const openScreen = document.getElementById("openScreen");
+const openButton = openScreen.querySelector("button");
+const music = document.getElementById("music");
+
+openButton.addEventListener("click", function () {
+  openScreen.style.display = "none";
+
+  if (music) {
+    music.play().catch(function () {});
+  }
+
+  animateOnScroll();
+});
+
 window.addEventListener("scroll", animateOnScroll);
 window.addEventListener("load", animateOnScroll);
 </script>
-
 </body>
 </html>
