@@ -555,8 +555,13 @@ p {
   <img src="Prigovor.jpg.PNG" class="prigovor-img" alt="Приговор">
 
   <div class="car-road">
-    <img src="Final-car.jpg.PNG" class="final-car-ride" alt="Машина">
-  </div>
+
+  <div class="car-wrapper final-car-ride">
+
+    <img src="Final-car.jpg.PNG" class="police-car">
+    <img src="daniil-head.jpg.PNG" class="daniil-head">
+    <img src="diana-head.jpg.PNG" class="diana-head">
+</div>
 </section>
 
 <style>
@@ -592,7 +597,33 @@ p {
   right: -460px;
   animation: carMove 12s linear infinite;
 }
+.police-car{
+  width:100%;
+  display:block;
+}
 
+.car-wrapper{
+  position:absolute;
+  width:420px;
+  max-width:none;
+  height:auto;
+}
+
+.daniil-head{
+  position:absolute;
+  width:62px;
+  top:60px;
+  left:105px;
+  z-index:3;
+}
+
+.diana-head{
+  position:absolute;
+  width:72px;
+  top:45px;
+  left:165px;
+  z-index:3;
+}
 @keyframes carMove {
   0% {
     right: -460px;
