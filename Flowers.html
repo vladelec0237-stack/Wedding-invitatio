@@ -1,1 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Даниил & Диана | Приглашение</title>
 
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family: Georgia, serif;
+  background:#dfeaf4;
+  color:#222;
+}
+
+.site{
+  max-width:430px;
+  margin:0 auto;
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(255,255,255,.58),rgba(255,255,255,.68)),
+    url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=900");
+  background-size:cover;
+  background-position:center;
+  overflow:hidden;
+}
+
+.invite{
+  min-height:100vh;
+  padding:45px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card{
+  width:100%;
+  min-height:88vh;
+  padding:38px 24px;
+  text-align:center;
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(208,166,82,.65);
+  border-radius:180px 180px 26px 26px;
+  box-shadow:0 0 35px rgba(255,255,255,.85), inset 0 0 30px rgba(255,255,255,.5);
+  position:relative;
+}
+
+.card:before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border:1px solid rgba(208,166,82,.55);
+  border-radius:170px 170px 22px 22px;
+  pointer-events:none;
+}
+
+.monogram{
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:76px;
+  color:#c99a45;
+  margin-top:35px;
+  margin-bottom:35px;
+}
+
+.small{
+  font-size:16px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin:18px 0;
+}
+
+.script{
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:34px;
+  color:#c99a45;
+  margin:8px 0 24px;
+}
+
+.names{
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:44px;
+  color:#c99a45;
+  margin:30px 0;
+}
+
+.info{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  font-size:19px;
+  margin:24px 0;
+}
+
+.icon{
+  color:#c99a45;
+  font-size:24px;
+}
+
+.line{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:26px 0;
+  color:#c99a45;
+}
+
+.line:before,.line:after{
+  content:"";
+  height:1px;
+  width:95px;
+  background:#c99a45;
+}
+
+.section-title{
+  font-size:18px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+p{
+  font-size:18px;
+  line-height:1.55;
+  margin:12px 0;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 28px;
+  border:1px solid #c99a45;
+  border-radius:40px;
+  text-decoration:none;
+  color:#222;
+  background:rgba(255,255,255,.6);
+}
+
+.flowers{
+  position:absolute;
+  width:160px;
+  opacity:.92;
+  pointer-events:none;
+}
+
+.f1{top:-25px;right:-35px}
+.f2{bottom:-25px;left:-35px}
+.f3{bottom:-20px;right:-30px;width:125px}
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:.9s;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<main class="site">
+
+<section class="invite">
+  <div class="card reveal">
+
+    <img class="flowers f1" src="https://pngimg.com/uploads/flower/flower_PNG102.png">
+    <img class="flowers f2" src="https://pngimg.com/uploads/flower/flower_PNG102.png">
+    <img class="flowers f3" src="https://pngimg.com/uploads/flower/flower_PNG102.png">
+
+    <div class="monogram">D & D</div>
+
+    <p class="small">С любовью приглашаем вас,</p>
+    <div class="script">дорогие гости</div>
+
+    <p>
+      разделить с нами самый важный день нашей жизни
+    </p>
+
+    <div class="names">Даниил & Диана</div>
+
+    <div class="info">
+      <span class="icon">📅</span>
+      <span>22.08.2026</span>
+      <span>|</span>
+      <span class="icon">🕕</span>
+      <span>18:00</span>
+    </div>
+
+    <div class="line">♡</div>
+
+    <div class="section-title">Место проведения:</div>
+    <p>
+      г. Степногорск,<br>
+      ул. Парковая, 2 мкр, д. 79
+    </p>
+
+    <div class="line">♡</div>
+
+    <div class="section-title">Дресс-код:</div>
+    <div class="script">классический / нарядный стиль</div>
+
+    <a class="btn" href="https://wa.me/77775340438" target="_blank">
+      Подтвердить присутствие
+    </a>
+
+  </div>
+</section>
+
+</main>
+
+<script>
+const items=document.querySelectorAll(".reveal");
+function show(){
+  items.forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 80){
+      el.classList.add("active");
+    }
+  });
+}
+window.addEventListener("scroll",show);
+window.addEventListener("load",show);
+</script>
+
+</body>
+</html>
