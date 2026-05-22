@@ -544,6 +544,15 @@ p {
 
 <section class="final-section">
   <div class="reveal">
+    <section class="countdown-section">
+  <h2>ДО ПРИВЕДЕНИЯ ПРИГОВОРА<br>В ИСПОЛНЕНИЕ ОСТАЛОСЬ</h2>
+  <div class="countdown">
+    <div><span id="days">00</span><small>дней</small></div>
+    <div><span id="hours">00</span><small>часов</small></div>
+    <div><span id="minutes">00</span><small>минут</small></div>
+    <div><span id="seconds">00</span><small>секунд</small></div>
+  </div>
+</section>
     <h2>VII. ЗАКЛЮЧЕНИЕ</h2>
     <p>
       Настоящий протокол вступает в силу с момента официального объявления граждан мужем и женой.
@@ -633,8 +642,59 @@ p {
     right: 100%;
   }
 }
-</style>
+  .countdown-section{
+  padding: 70px 24px;
+  text-align: center;
+  background: #f6f1e7;
+}
 
+.countdown-section h2{
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.countdown{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.countdown div{
+  border: 1px solid #222;
+  padding: 14px 5px;
+}
+
+.countdown span{
+  display: block;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.countdown small{
+  font-size: 11px;
+}
+</style>
+function updateCountdown(){
+  const weddingDate = new Date("2026-08-22T18:00:00").getTime();
+  const now = new Date().getTime();
+  const diff = weddingDate - now;
+
+  if(diff <= 0){
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+    return;
+  }
+
+  document.getElementById("days").textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.getElementById("hours").textContent = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  document.getElementById("minutes").textContent = Math.floor((diff / (1000 * 60)) % 60);
+  document.getElementById("seconds").textContent = Math.floor((diff / 1000) % 60);
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 <script>
 document.querySelectorAll(".cells").forEach(function (box) {
   const text = box.dataset.text;
