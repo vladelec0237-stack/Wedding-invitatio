@@ -150,10 +150,70 @@ p{
   transform:translateY(0);
 }
 </style>
+  .petals{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.petal{
+  position: absolute;
+  top: -30px;
+  font-size: 18px;
+  color: #b8d9ee;
+  opacity: .75;
+  animation: fall linear infinite;
+}
+
+@keyframes fall{
+  0%{
+    transform: translateY(-40px) rotate(0deg);
+    opacity: 0;
+  }
+  10%{
+    opacity: .8;
+  }
+  100%{
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.bloom{
+  position: absolute;
+  font-size: 90px;
+  color: #b8d9ee;
+  opacity: 0;
+  transform: scale(.2) rotate(-20deg);
+  transition: 1.2s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bloom-left{
+  left: -10px;
+  bottom: 45px;
+}
+
+.bloom-right{
+  right: -10px;
+  top: 70px;
+  color: #ffffff;
+  text-shadow: 0 0 8px #b8d9ee;
+}
+
+.bloom.active{
+  opacity: .75;
+  transform: scale(1) rotate(0deg);
+}
 </head>
 
 <body>
 
+<div class="petals"></div>
+  
 <main class="site">
 
 <section>
@@ -298,6 +358,34 @@ function timer(){
 
 timer();
 setInterval(timer,60000);
+  const petalsBox = document.querySelector(".petals");
+
+for(let i = 0; i < 22; i++){
+  const petal = document.createElement("div");
+  petal.className = "petal";
+  petal.textContent = Math.random() > 0.5 ? "♡" : "❀";
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.animationDuration = 7 + Math.random() * 8 + "s";
+  petal.style.animationDelay = Math.random() * 8 + "s";
+  petal.style.fontSize = 12 + Math.random() * 14 + "px";
+  petalsBox.appendChild(petal);
+}
+
+const blooms = document.querySelectorAll(".bloom");
+
+function showBlooms(){
+  blooms.forEach(bloom=>{
+    const rect = bloom.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 80 && rect.bottom > 0){
+      bloom.classList.add("active");
+    } else {
+      bloom.classList.remove("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", showBlooms);
+window.addEventListener("load", showBlooms);
 </script>
 
 </body>
