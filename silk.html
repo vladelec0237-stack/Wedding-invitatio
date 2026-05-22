@@ -10,8 +10,9 @@
 
 body{
   font-family: Georgia, "Times New Roman", serif;
-  color:#3b3b3b;
-  background:#f5f1e9;
+  color:#263847;
+  background:#d8f1ff;
+  overflow-x:hidden;
 }
 
 .site{
@@ -19,10 +20,14 @@ body{
   margin:0 auto;
   min-height:100vh;
   background:
-    linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.72)),
+    radial-gradient(circle at 20% 10%, rgba(80,220,255,.55), transparent 32%),
+    radial-gradient(circle at 90% 30%, rgba(180,245,255,.75), transparent 35%),
+    linear-gradient(rgba(255,255,255,.54),rgba(220,245,255,.60)),
     url("https://images.unsplash.com/photo-1615874694520-474822394e73?q=80&w=900");
   background-size:cover;
   background-attachment:fixed;
+  position:relative;
+  overflow:hidden;
 }
 
 section{
@@ -32,21 +37,28 @@ section{
   flex-direction:column;
   justify-content:center;
   text-align:center;
+  position:relative;
+  overflow:hidden;
 }
 
 .card{
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(160,190,210,.55);
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(72,210,255,.7);
   padding:42px 24px;
-  box-shadow:0 20px 60px rgba(130,150,160,.18);
-  backdrop-filter:blur(8px);
+  box-shadow:
+    0 20px 60px rgba(0,170,255,.22),
+    0 0 28px rgba(92,225,255,.35);
+  backdrop-filter:blur(10px);
+  position:relative;
+  z-index:5;
+  border-radius:22px;
 }
 
 .small{
   letter-spacing:4px;
   font-size:13px;
   text-transform:uppercase;
-  color:#7899ad;
+  color:#3d91b8;
   margin-bottom:35px;
 }
 
@@ -66,9 +78,10 @@ h2{
 
 .script{
   font-family:"Brush Script MT","Segoe Script",cursive;
-  font-size:30px;
-  color:#8fb8cf;
+  font-size:32px;
+  color:#00a8e8;
   margin-bottom:25px;
+  text-shadow:0 0 10px rgba(80,220,255,.45);
 }
 
 p{
@@ -81,14 +94,15 @@ p{
   margin-top:36px;
   font-size:34px;
   letter-spacing:3px;
-  color:#7899ad;
+  color:#168fc1;
 }
 
 .line{
   width:1px;
   height:70px;
-  background:#b9cbd6;
+  background:#43cfff;
   margin:35px auto;
+  box-shadow:0 0 12px #43cfff;
 }
 
 .time-row{
@@ -103,7 +117,7 @@ p{
 .time{
   font-size:28px;
   font-style:italic;
-  color:#7899ad;
+  color:#0ba7dc;
 }
 
 .place-img{
@@ -111,32 +125,24 @@ p{
   height:180px;
   object-fit:cover;
   margin:25px 0;
-  filter:saturate(.75);
-}
-
-.input{
-  width:100%;
-  height:42px;
-  border:1px solid #c7d7df;
-  background:rgba(255,255,255,.8);
-  padding:0 12px;
-  margin:20px 0;
-  font-size:15px;
+  filter:saturate(1.2) brightness(1.05);
+  border-radius:16px;
 }
 
 .btn{
   display:inline-block;
   padding:14px 28px;
-  border:1px solid #8fb8cf;
-  color:#3b3b3b;
+  border:1px solid #00a8e8;
+  color:#263847;
   text-decoration:none;
   border-radius:40px;
-  background:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.68);
   margin-top:12px;
+  box-shadow:0 0 18px rgba(74,210,255,.28);
 }
 
 .blue{
-  color:#7899ad;
+  color:#168fc1;
 }
 
 .reveal{
@@ -149,76 +155,91 @@ p{
   opacity:1;
   transform:translateY(0);
 }
-  .petals{
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 50;
+
+.petals{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:20;
 }
 
 .petal{
-  position: absolute;
-  top: -30px;
-  font-size: 18px;
-  color: #b8d9ee;
-  opacity: .75;
-  animation: fall linear infinite;
+  position:absolute;
+  top:-30px;
+  color:#56dcff;
+  opacity:.85;
+  animation:fall linear infinite;
+  text-shadow:
+    0 0 7px #e8fdff,
+    0 0 16px #39d6ff,
+    0 0 28px #009dff;
 }
 
 @keyframes fall{
-  0%{
-    transform: translateY(-40px) rotate(0deg);
-    opacity: 0;
-  }
-  10%{
-    opacity: .8;
-  }
-  100%{
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+  0%{transform:translateY(-40px) rotate(0deg);opacity:0}
+  10%{opacity:.9}
+  100%{transform:translateY(110vh) rotate(360deg);opacity:0}
 }
 
 .bloom{
-  position: absolute;
-  font-size: 90px;
-  color: #b8d9ee;
-  opacity: 0;
-  transform: scale(.2) rotate(-20deg);
-  transition: 1.2s ease;
-  z-index: 2;
-  pointer-events: none;
+  position:absolute;
+  font-size:150px;
+  color:#35d6ff;
+  opacity:0;
+  transform:scale(.2) rotate(-18deg);
+  transition:1.25s ease;
+  z-index:1;
+  pointer-events:none;
+  text-shadow:
+    0 0 10px #e6fcff,
+    0 0 24px #42d9ff,
+    0 0 46px #008cff;
 }
 
 .bloom-left{
-  left: -10px;
-  bottom: 45px;
+  left:-45px;
+  bottom:20px;
 }
 
 .bloom-right{
-  right: -10px;
-  top: 70px;
-  color: #ffffff;
-  text-shadow: 0 0 8px #b8d9ee;
+  right:-45px;
+  top:35px;
+  color:#dffcff;
+}
+
+.bloom-extra{
+  font-size:105px;
+  color:#0cc7ff;
+  left:50%;
+  bottom:10px;
+  opacity:0;
+  transform:translateX(-50%) scale(.2);
 }
 
 .bloom.active{
-  opacity: .75;
-  transform: scale(1) rotate(0deg);
+  opacity:.92;
+  transform:scale(1) rotate(0deg);
 }
-  </style>
+
+.bloom-extra.active{
+  opacity:.65;
+  transform:translateX(-50%) scale(1);
+}
+</style>
 </head>
 
 <body>
 
 <div class="petals"></div>
-  
+
 <main class="site">
 
 <section>
-  <div class="bloom bloom-left">✿</div>
-<div class="bloom bloom-right">❀</div>
+  <div class="bloom bloom-left">✺</div>
+  <div class="bloom bloom-right">✿</div>
+  <div class="bloom bloom-extra">❀</div>
+
   <div class="card reveal">
     <div class="small">Приглашение на свадьбу</div>
     <h1>Даниил<br>&<br>Диана</h1>
@@ -228,7 +249,9 @@ p{
 
 <section>
   <div class="bloom bloom-left">✿</div>
-<div class="bloom bloom-right">❀</div>
+  <div class="bloom bloom-right">✺</div>
+  <div class="bloom bloom-extra">✧</div>
+
   <div class="card reveal">
     <h2>Родные, близкие!</h2>
     <div class="script">Мы женимся!</div>
@@ -247,8 +270,10 @@ p{
 </section>
 
 <section>
-  <div class="bloom bloom-left">✿</div>
-<div class="bloom bloom-right">❀</div>
+  <div class="bloom bloom-left">❀</div>
+  <div class="bloom bloom-right">✿</div>
+  <div class="bloom bloom-extra">✺</div>
+
   <div class="card reveal">
     <h2>Локация</h2>
     <div class="script">Место проведения</div>
@@ -263,8 +288,10 @@ p{
 </section>
 
 <section>
-  <div class="bloom bloom-left">✿</div>
-<div class="bloom bloom-right">❀</div>
+  <div class="bloom bloom-left">✺</div>
+  <div class="bloom bloom-right">❀</div>
+  <div class="bloom bloom-extra">✿</div>
+
   <div class="card reveal">
     <h2>Время 18:00</h2>
     <div class="script">Программа дня</div>
@@ -293,20 +320,23 @@ p{
 
 <section>
   <div class="bloom bloom-left">✿</div>
-<div class="bloom bloom-right">❀</div>
+  <div class="bloom bloom-right">✺</div>
+  <div class="bloom bloom-extra">❀</div>
+
   <div class="card reveal">
     <h2>Дресс-код</h2>
     <p>
       Просим поддержать атмосферу праздника
       в классическом/нарядном стиле.
     </p>
-    
   </div>
 </section>
 
 <section>
-  <div class="bloom bloom-left">✿</div>
-<div class="bloom bloom-right">❀</div>
+  <div class="bloom bloom-left">❀</div>
+  <div class="bloom bloom-right">✿</div>
+  <div class="bloom bloom-extra">✺</div>
+
   <div class="card reveal">
     <h2>Анкета гостя</h2>
     <div class="script">Ждём вас!</div>
@@ -314,7 +344,6 @@ p{
       Пожалуйста, подтвердите своё присутствие
       до <span class="blue">31.07.2026</span>.
     </p>
-
 
     <a class="btn" href="https://wa.me/77772178519" target="_blank">
       Подтвердить Даниилу
@@ -326,8 +355,10 @@ p{
 </section>
 
 <section>
-  <div class="bloom bloom-left">✿</div>
-<div class="bloom bloom-right">❀</div>
+  <div class="bloom bloom-left">✺</div>
+  <div class="bloom bloom-right">❀</div>
+  <div class="bloom bloom-extra">✿</div>
+
   <div class="card reveal">
     <div class="small">До свадьбы осталось</div>
     <h2 id="timer">...</h2>
@@ -372,16 +403,17 @@ function timer(){
 
 timer();
 setInterval(timer,60000);
-  const petalsBox = document.querySelector(".petals");
 
-for(let i = 0; i < 22; i++){
+const petalsBox = document.querySelector(".petals");
+
+for(let i = 0; i < 46; i++){
   const petal = document.createElement("div");
   petal.className = "petal";
-  petal.textContent = Math.random() > 0.5 ? "♡" : "❀";
+  petal.textContent = Math.random() > 0.55 ? "✦" : "❀";
   petal.style.left = Math.random() * 100 + "vw";
-  petal.style.animationDuration = 7 + Math.random() * 8 + "s";
-  petal.style.animationDelay = Math.random() * 8 + "s";
-  petal.style.fontSize = 12 + Math.random() * 14 + "px";
+  petal.style.animationDuration = 6 + Math.random() * 8 + "s";
+  petal.style.animationDelay = Math.random() * 7 + "s";
+  petal.style.fontSize = 12 + Math.random() * 20 + "px";
   petalsBox.appendChild(petal);
 }
 
