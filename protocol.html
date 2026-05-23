@@ -698,6 +698,7 @@ p {
   right: -460px;
   animation: carMove 12s linear infinite;
 }
+
 .police-car{
   width:100%;
   display:block;
@@ -725,6 +726,7 @@ p {
   left:165px;
   z-index:3;
 }
+
 @keyframes carMove {
   0% {
     right: -460px;
@@ -733,29 +735,35 @@ p {
   100% {
     right: 100%;
   }
-
-  .countdown-section{
-  padding: 0;
-  text-align: center;
-  background: transparent;
 }
 
+.final-section{
+  padding: 70px 24px;
+  text-align: center;
+  background: #f6f1e7;
+  overflow: hidden;
+}
 
-.countdown-section h2{
-  font-size: 28px;
-  margin-bottom: 30px;
+.countdown-section{
+  padding: 0;
+  margin: 0 0 55px 0;
+  text-align: center;
+  background: transparent;
+  border: none;
 }
 
 .countdown{
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+  margin: 25px auto 0;
 }
 
-.countdown div{
+.countdown > div{
   border: 1px solid #222;
   padding: 14px 5px;
-  text-align:center;
+  text-align: center;
 }
 
 .countdown span{
@@ -765,74 +773,18 @@ p {
 }
 
 .countdown small{
+  display: block;
   font-size: 11px;
 }
-  .final-buttons{
+
+.final-buttons{
   margin-top:35px;
   display:flex;
   flex-direction:column;
   gap:14px;
   align-items:center;
 }
-  .countdown-section{
-  border: none !important;
-  margin: 0 !important;
-}
-
-.final-section .countdown-section{
-  border: none !important;
-  margin: 0 !important;
-}
-  .final-section img{
-  border: none !important;
-}
-  .final-section{
-  padding: 70px 24px !important;
-  text-align: center !important;
-  background: #f6f1e7 !important;
-  overflow: hidden !important;
-}
-
-.final-section h2,
-.final-section p{
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.countdown-section{
-  padding: 0 !important;
-  margin: 0 0 55px 0 !important;
-  background: transparent !important;
-  border: none !important;
-}
-
-.countdown{
-  width: 100% !important;
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 8px !important;
-  margin: 25px auto 0 !important;
-}
-
-.countdown > div{
-  border: 1px solid #222 !important;
-  padding: 14px 5px !important;
-  text-align: center !important;
-}
-
-.countdown span{
-  display: block !important;
-  font-size: 28px !important;
-  font-weight: bold !important;
-}
-
-.countdown small{
-  display: block !important;
-  font-size: 11px !important;
-}
 </style>
-
 <script>
 document.querySelectorAll(".cells").forEach(function (box) {
   const text = box.dataset.text;
