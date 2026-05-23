@@ -247,6 +247,57 @@ p{
   opacity:.62;
   transform:translateX(-50%) scale(1);
 }
+  .scroll-hint{
+  position:absolute;
+  bottom:35px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+
+  color:#9fffee;
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  opacity:.9;
+  transition:.6s;
+
+  animation:hintFloat 2.2s ease-in-out infinite;
+
+  text-shadow:
+    0 0 8px #dfffff,
+    0 0 18px #59ffe6,
+    0 0 35px #00cfff;
+}
+
+.scroll-hint.hide{
+  opacity:0;
+  pointer-events:none;
+}
+
+.arrow{
+  font-size:38px;
+  line-height:1;
+}
+
+@keyframes hintFloat{
+  0%{
+    transform:translateX(-50%) translateY(0);
+  }
+
+  50%{
+    transform:translateX(-50%) translateY(10px);
+  }
+
+  100%{
+    transform:translateX(-50%) translateY(0);
+  }
+}
 </style>
 </head>
 
@@ -257,6 +308,12 @@ p{
 <main class="site">
 
 <section>
+
+<div class="scroll-hint" id="scrollHint">
+  <div class="arrow">⌄</div>
+  <span>Листайте ниже</span>
+</div>
+
   <div class="bloom bloom-left">✺</div>
   <div class="bloom bloom-right">✿</div>
   <div class="bloom bloom-extra">❀</div>
@@ -266,6 +323,7 @@ p{
     <h1>Даниил<br>&<br>Диана</h1>
     <div class="date">22.08.2026</div>
   </div>
+
 </section>
 
 <section>
