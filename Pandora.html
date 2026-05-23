@@ -342,6 +342,49 @@ p{
   box-shadow:0 0 20px rgba(99,255,224,.35);
 }
   }
+  .open-screen{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(0,255,220,.22), transparent 35%),
+    linear-gradient(rgba(4,15,22,.94), rgba(5,18,26,.96));
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transition:.8s;
+}
+
+.open-screen.hide{
+  opacity:0;
+  pointer-events:none;
+}
+
+.open-box{
+  width:82%;
+  padding:46px 24px;
+  border:1px solid rgba(99,255,224,.45);
+  border-radius:28px;
+  background:rgba(10,25,35,.45);
+  box-shadow:
+    0 0 30px rgba(99,255,224,.22),
+    0 0 80px rgba(0,180,255,.16);
+  backdrop-filter:blur(14px);
+}
+
+.open-box button{
+  margin-top:35px;
+  padding:14px 34px;
+  border:1px solid #63ffe0;
+  border-radius:40px;
+  background:rgba(8,28,38,.7);
+  color:#dffcff;
+  font-size:18px;
+  letter-spacing:2px;
+  font-family:Georgia, serif;
+  box-shadow:0 0 20px rgba(99,255,224,.35);
+}
 </style>
 </head>
 
@@ -355,7 +398,7 @@ p{
 </div>
 
 <audio id="music" loop>
-  <source src="Музыка для Пандоры.mp3" type="audio/mpeg">
+  <source src="Музыка для Пандоры .mp3" type="audio/mpeg">
 </audio>
 <div class="petals"></div>
 
