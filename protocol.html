@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Личное дело №001 | Даниил и Диана</title>
-
+}
 <style>
 * {
   box-sizing: border-box;
@@ -333,6 +333,53 @@ p {
   opacity: 1;
   transform: translate(0);
 }
+  .scroll-hint{
+  position:absolute;
+  bottom:35px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+
+  color:#9d1f2f;
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  opacity:.85;
+  transition:.6s;
+
+  animation:hintFloat 2s ease-in-out infinite;
+}
+
+.scroll-hint.hide{
+  opacity:0;
+  pointer-events:none;
+}
+
+.arrow{
+  font-size:40px;
+  line-height:1;
+  text-shadow:0 0 10px rgba(157,31,47,.35);
+}
+
+@keyframes hintFloat{
+  0%{
+    transform:translateX(-50%) translateY(0);
+  }
+
+  50%{
+    transform:translateX(-50%) translateY(10px);
+  }
+
+  100%{
+    transform:translateX(-50%) translateY(0);
+  }
+}
 </style>
 </head>
 
@@ -353,11 +400,22 @@ p {
 <main class="site">
 
 <section class="cover">
+
+<div class="scroll-hint" id="scrollHint">
+  <div class="arrow">⌄</div>
+  <span>Листайте ниже</span>
+</div>
+
   <div class="reveal">
     <h1>Личное дело</h1>
     <div class="case-number">№ <span class="hand">001</span></div>
-    <p>о задержании граждан<br>с целью последующего<br>бракосочетания</p>
+    <p>
+      о задержании граждан<br>
+      с целью последующего<br>
+      бракосочетания
+    </p>
   </div>
+
 </section>
 
 <section class="protocol-section">
@@ -737,6 +795,17 @@ window.addEventListener("load", animateOnScroll);
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+  const scrollHint = document.getElementById("scrollHint");
+
+window.addEventListener("scroll", function(){
+
+  if(window.scrollY > 40){
+    scrollHint.classList.add("hide");
+  } else {
+    scrollHint.classList.remove("hide");
+  }
+
+});
 </script>
 </body>
 </html>
